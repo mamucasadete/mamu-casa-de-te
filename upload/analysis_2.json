@@ -1,0 +1,28 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "content": "### 1) Tipo de contenido  \n**Post (publicación de feed)**. La captura muestra una **galería de 12 imágenes** (3 filas × 4 columnas) en el feed de Instagram, típica de un post de múltiples fotos. No es un Reel (video corto), Story (contenido efímero) o Highlight (álbum permanente en el perfil).\n\n\n### 2) Descripción detallada de lo que se ve  \nLa galería promociona un **establecimiento llamado \"MAMU Casa de té\"**, especializado en té y productos artesanales con lavanda (según los textos). Las imágenes se organizan en 3 filas:  \n\n- **Primera fila (izquierda a derecha)**:  \n  1. **Flyer promocional**: Con el logo \"MAMU\", un mensaje de bienvenida (\"Este 8 de marzo, día de la mujer, Mamu te espera para disfrutar de delicias y meriendas\"), horarios (\"Mañana: De 8:30 a 12:00hs; Tarde: A partir de las 15hs\"), ubicación (\"En AromaHerba, Calmayo, Córdoba\") y un corazón.  \n  2. **Postre**: Un plato con una tarta, frutas (kiwi, uvas) y un vaso de bebida.  \n  3. **Waffles**: Dos waffles dorados con relleno, servidos en un plato.  \n  4. **Té y chocolate**: Una tetera de porcelana con té, una caja de chocolates \"MAMU\" y dos bombones de chocolate en forma de corazón.  \n\n- **Segunda fila**:  \n  1. **Flyer adicional**: Similar al primero, con el logo \"MAMU Casa de té\", horarios (\"Viernes, sábado y domingo! A partir de las 17:00hs\") y una foto de una mesa con té.  \n  2. **Cena al aire libre**: Una mesa redonda con sillas, iluminada por luces de hadas, en un jardín con árboles.  \n  3. **Bar \"El Iguanon\"**: Un collage con fotos de comida (sándwiches, empanadas) y texto (\"Desayuno - Merienda - Almuerzo - Cena\").  \n  4. **Campo de lavanda**: Un paisaje con flores de lavanda y montañas al fondo.  \n\n- **Tercera fila**:  \n  1. **Galletas artesanales**: Galletas amarillas envueltas en papel, apiladas.  \n  2. **Mesa de té**: Una mesa con mantel blanco, tetera y vasos, en un jardín con luces de hadas.  \n  3. **Lavanda**: Un campo de lavanda en flor, con un camino de piedras.  \n  4. **Aperitivos**: Un plato con aceitunas, tomates cherry y galletas, junto a una lata de bebida.  \n\n\n### 3) Texto/caption visible  \nEl **caption principal** (texto debajo de la galería) no es visible en la captura, pero los **flyers y textos en las imágenes** incluyen:  \n- \"MAMU Casa de té\" (logo y nombre).  \n- \"Especialidades con lavanda\" (eslogan).  \n- \"Este 8 de marzo, día de la mujer, Mamu te espera para disfrutar de delicias y meriendas\" (mensaje promocional).  \n- \"Horarios: Mañana: De 8:30 a 12:00hs; Tarde: A partir de las 15hs\" (horarios).  \n- \"En AromaHerba, Calmayo, Córdoba\" (ubicación).  \n- \"Viernes, sábado y domingo! A partir de las 17:00hs\" (horarios adicionales).  \n- \"Bar El Iguanon\" (nombre de otro establecimiento, posiblemente colaborador).  \n- \"Desayuno - Merienda - Almuerzo - Cena\" (servicios del bar).  \n\n\n### 4) Hashtags visibles  \nNo se ven hashtags en la captura. Los textos en las imágenes son principalmente promocionales (flyers, nombres, horarios) y no incluyen hashtags.  \n\n\n### 5) Número de likes/comentarios  \nNo se ven los números de likes o comentarios en la captura. La interfaz de Instagram muestra el feed, pero los contadores de interacción (likes, comentarios) no están visibles en esta imagen.  \n\n\n### 6) Tono del contenido  \n**Profesional y acogedor**, con un toque **inspiracional y artesanal**.  \n- **Profesional**: Los flyers tienen un diseño cuidado (colores pastel, tipografía elegante) y presentan información clara (horarios, ubicación, servicios), lo que sugiere un negocio formal.  \n- **Acogedor**: Las imágenes de jardines, mesas al aire libre y comida casera transmiten un ambiente cálido y relajado, ideal para un \"casa de té\".  \n- **Artesanal**: Destaca el uso de lavanda (especialidad) y productos hechos a mano (galletas, chocolates, postres), lo que enfatiza la calidad y autenticidad.  \n- **Inspiracional**: El paisaje de lavanda y la decoración con luces de hadas crean una atmósfera romántica y atractiva, invitando a los usuarios a visitar el lugar.  \n\n\n### Resumen  \nEl post promociona un \"casa de té\" llamado \"MAMU\" con un enfoque en productos artesanales y un ambiente acogedor. El contenido es visualmente atractivo, con una mezcla de flyers informativos y fotos de comida/jardines, y el tono es profesional pero cercano, ideal para atraer a clientes que buscan experiencias relajantes y auténticas.",
+        "role": "assistant"
+      }
+    }
+  ],
+  "created": 1782758858,
+  "id": "20260630024719f34926fcccb54211",
+  "model": "glm-4.6v",
+  "object": "chat.completion",
+  "request_id": "20260630024719f34926fcccb54211",
+  "usage": {
+    "completion_tokens": 1308,
+    "completion_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "prompt_tokens": 2802,
+    "prompt_tokens_details": {
+      "cached_tokens": 4
+    },
+    "total_tokens": 4110
+  }
+}

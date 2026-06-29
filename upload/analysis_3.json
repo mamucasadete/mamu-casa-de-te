@@ -1,0 +1,28 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "content": "### 1) Tipo de contenido  \n**Post (publicación de feed)**. La captura muestra una cuadrícula de 12 imágenes (3 filas × 4 columnas), típica de un post de Instagram, no un Reel (video corto), Story (contenido efímero) o Highlight (álbum de Stories guardado).  \n\n\n### 2) Descripción detallada de lo que se ve  \nLa cuadrícula contiene 12 imágenes que promocionan un negocio llamado **\"MAMU Casa de te\"** (especialidades con lavanda), con un enfoque en **experiencias rurales, gastronomía y atmósferas acogedoras**. Las imágenes se organizan en 3 filas:  \n\n- **Primera fila (arriba)**:  \n  1. **Imagen 1**: Paisaje rural con un campo verde, niebla y una bicicleta blanca en el fondo (evoca tranquilidad y naturaleza).  \n  2. **Imagen 2**: Cartel promocional del negocio: \"MAMU Casa de te\" con el subtítulo \"Especialidades con lavanda\", horarios (\"viernes, sábados y domingos apartir de las 17 horas\"), número de reservas (1157496667) y redes sociales (@mamu_casa_de_te en Instagram y Facebook).  \n  3. **Imagen 3**: Canasto de mimbre con flores de lavanda (enlace directo con la especialidad del negocio).  \n  4. **Imagen 4**: Taza de café con un gorro de Santa Claus, fondo morado con luces de hadas y texto \"Felices fiestas Y feliz año nuevo Te deseamos desde...\" (promoción navideña).  \n  5. **Imagen 5**: Postre de chocolate (posiblemente un brownie o torta) con crema batida, en un plato de madera (gastro del negocio).  \n\n- **Segunda fila (centro)**:  \n  1. **Imagen 6**: Bicicleta blanca con una cesta que dice \"AROMATERAPIA\" (enlace con la lavanda, terapia con aromas).  \n  2. **Imagen 7**: Interior del local: sillas azules, mesa de madera, tetera de vidrio con té rojo y galletas (ambiente acogedor, café/te).  \n  3. **Imagen 8**: Té en taza blanca con un postre dorado (posiblemente un buñuelo o empanada frita, highlights de la gastronomía).  \n  4. **Imagen 9**: Paisaje invernal con árboles sin hojas y nieve (contraste con el ambiente rural).  \n  5. **Imagen 10**: Taza de café negro con una rebanada de pastel (otro producto del local, en una mesa con vista a un balcón con macetas).  \n\n- **Tercera fila (abajo)**:  \n  1. **Imagen 11**: Postre con crema y un logotipo \"M\" (marca del negocio, probablemente un postre de la casa).  \n  2. **Imagen 12**: Collage de fotos: tazas de té, postres y el texto \"Fin de semana\" (promoción de actividades para el fin de semana).  \n  3. **Imagen 13**: Postres con glaseado azul (posiblemente galletas o magdalenas, highlights de la repostería).  \n  4. **Imagen 14**: Logotipo del negocio con la bandera argentina y el texto \"¡Te esperamos este jueves, viernes y sábado!\" (promoción de horarios extendidos).  \n\n\n### 3) Texto/caption visible  \nEl texto principal está en la **Imagen 2 (cartel promocional)**:  \n- \"MAMU Casa de te\"  \n- \"Especialidades con lavanda\"  \n- \"Horarios de atención: viernes, sábados y domingos apartir de las 17 horas!\"  \n- \"Reservas 📞 1157496667\"  \n- \"Síguenos en nuestras redes\" (con iconos de Instagram y Facebook: @mamu_casa_de_te)  \n- \"Lo esperamos!\"  \n\nOtro texto visible:  \n- Imagen 4: \"Felices fiestas Y feliz año nuevo Te deseamos desde...\"  \n- Imagen 12: \"Fin de semana\"  \n- Imagen 14: \"¡Te esperamos este jueves, viernes y sábado!\"  \n\n\n### 4) Hashtags visibles  \n**No se ven hashtags** en ninguna de las imágenes (la captura no muestra el pie de post donde suelen ir los hashtags).  \n\n\n### 5) Número de likes/comentarios si se ven  \n**No se ven** (la captura muestra la cuadrícula de imágenes, pero no los contadores de likes o comentarios debajo de cada post).  \n\n\n### 6) Tono del contenido  \nEl tono es **acogedor, rústico y festivo**, con un enfoque en:  \n- **Tranquilidad y naturaleza**: Paisajes rurales, bicicletas, flores de lavanda.  \n- **Gastronomía artesanal**: Postres, té, café, especialidades con lavanda.  \n- **Atmósfera cálida**: Interiores con sillas azules, teteras, luces de hadas (Imagen 4).  \n- **Promoción de eventos**: \"Fin de semana\", \"Felices fiestas\", horarios extendidos (\"jueves, viernes y sábado\").  \n\nEl contenido busca atraer a un público que valora experiencias relajantes, productos naturales (lavanda) y comida casera, con un toque festivo (navidad) y práctico (reservas, horarios).  \n\n\n**Resumen**: Es un post de Instagram para promocionar un negocio de té y repostería con lavanda, usando imágenes que combinan naturaleza, gastronomía y atmósferas acogedoras, con un tono cálido y festivo.",
+        "role": "assistant"
+      }
+    }
+  ],
+  "created": 1782758814,
+  "id": "2026063002461192acb99e72a04ca6",
+  "model": "glm-4.6v",
+  "object": "chat.completion",
+  "request_id": "2026063002461192acb99e72a04ca6",
+  "usage": {
+    "completion_tokens": 1344,
+    "completion_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "prompt_tokens": 2788,
+    "prompt_tokens_details": {
+      "cached_tokens": 10
+    },
+    "total_tokens": 4132
+  }
+}

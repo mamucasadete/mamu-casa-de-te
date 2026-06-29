@@ -1,0 +1,28 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "content": "### Análisis de la captura de Instagram  \n\n#### **Tipo de contenido**  \nEl contenido es **promocional y gastronómico**, centrado en un negocio (probablemente un café, pastelería o restaurante) que promociona sus productos, eventos y experiencias. Incluye imágenes de comida, anuncios de eventos, y escenas de servicio al cliente.  \n\n\n#### **Qué se ve**  \nLa captura muestra una **galería de publicaciones** (tipo \"grilla\" o \"muro\") con:  \n- **Comida**: Tartas, panes con chispas, postres en vasos, waffles con toppings, sopas, y bebidas (té, café).  \n- **Eventos**: Promociones como \"Fin de semana largo\", \"1° Calmayo Gastronómico\" (19 de abril), y \"Te esperamos este jueves, viernes y sábado\".  \n- **Escenas de negocio**: Mesas de venta en ferias, personal atendiendo, y ambientes acogedores (exteriores con mesas, interiores con decoración).  \n- **Branding**: Logotipo con una \"M\" estilizada, y textos que resaltan \"aromas y sabores únicos\".  \n\n\n#### **Texto visible**  \n- **Titulares y promociones**:  \n  - *\"Fin de semana largo\"*  \n  - *\"Te esperamos en Aromahierba\"*  \n  - *\"¡Te esperamos este jueves, viernes y sábado!\"*  \n  - *\"Este fin de semana patrio te esperamos a partir de las 15 hs para celebrarlo con chocolate y bizcochuelo. Vivi tu experiencia única de aromas y sabores\"*  \n  - *\"1° CALMAYO GASTRONÓMICO\"*  \n  - *\"19 DE ABRIL\"*  \n  - *\"EN CAMPING LOS NOGALES | 17HS A 23:30 HS\"*  \n  - *\"¿ESTÁS LISTO PARA EL PRÓXIMO EVENTO? dale click\"*  \n- **Branding**: Logotipo con \"M\" y texto \"LA PATRIA | VIVA LA PATRIA\" (en una publicación).  \n\n\n#### **Hashtags**  \nNo se visualizan hashtags en la captura (posiblemente ocultos o no incluidos en las imágenes mostradas).  \n\n\n#### **Likes/comentarios**  \nNo se aprecian números de likes o comentarios en la captura (la interfaz muestra la galería, no los detalles de interacción de cada post).  \n\n\n#### **Tono**  \nEl tono es **acogedor, festivo y promocional**:  \n- Usa lenguaje informal y cercano (*\"Te esperamos\"*, *\"Vivi tu experiencia\"*).  \n- Resalta celebraciones (fin de semana patrio, eventos gastronómicos) para generar entusiasmo.  \n- Enfatiza la calidad de los productos (*\"aromas y sabores únicos\"*) y la experiencia del cliente.  \n\n\nEn resumen, el perfil promociona un negocio gastronómico con un enfoque en eventos, productos artesanales y una imagen cálida y festiva.",
+        "role": "assistant"
+      }
+    }
+  ],
+  "created": 1782758924,
+  "id": "20260630024827226bb49528d445b1",
+  "model": "glm-4.6v",
+  "object": "chat.completion",
+  "request_id": "20260630024827226bb49528d445b1",
+  "usage": {
+    "completion_tokens": 683,
+    "completion_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "prompt_tokens": 2733,
+    "prompt_tokens_details": {
+      "cached_tokens": 6
+    },
+    "total_tokens": 3416
+  }
+}

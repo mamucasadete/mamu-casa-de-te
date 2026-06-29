@@ -1,0 +1,28 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "content": "### 1) Tipo de contenido  \nSe trata de una **galería de posts** (publicaciones estáticas) en la página de perfil de Instagram. Cada imagen es un post individual, organizados en una cuadrícula de 3 filas y 5 columnas (15 posts totales), típica de la vista de perfil de la plataforma.\n\n\n### 2) Descripción detallada de lo que se ve  \nLa galería muestra una colección de imágenes con un tema central: **experiencias de relax, naturaleza y gastronomía en un entorno rural o de campo**, probablemente relacionado con un negocio de té, cafetería o casa rural. Los posts se agrupan en categorías temáticas:  \n\n- **Gastronomía y bebidas**:  \n  - Imágenes de tés (tetera de vidrio con té rojo, tazas de té), postres (brioche con chocolate y nueces, waffles con crema y frutas, galletas en una taza de cerámica con forma de cerdo), y desayunos/meriendas (platos con pan, mermeladas, frutas).  \n  - Detalles como un reloj de arena con lavanda, una tetera blanca, y una cesta con pan, que sugieren un ambiente acogedor y artesanal.  \n\n- **Naturaleza y paisajes**:  \n  - Vistas de campos de lavanda (con flores moradas en primer plano y colinas verdes al fondo), un paisaje rural con árboles y un sendero, y un nido de pájaro colgado en un árbol.  \n  - Imágenes de jardines con flores (lavanda) y un letrero que dice \"AROMAHÉRBA\" (posiblemente el nombre del negocio).  \n\n- **Ambiente y experiencias**:  \n  - Personas sentadas en una mesa, disfrutando de una comida o conversación, lo que transmite un ambiente social y relajado.  \n  - Texto visible en una imagen: \"Merendá en un campo de lavanda\" (merienda en un campo de lavanda), que describe una experiencia específica.  \n\n\n### 3) Texto/caption visible  \nEl único texto legible en la captura es:  \n- **\"Merendá en un campo de lavanda\"**: Aparece en una imagen de la segunda fila, tercera columna, describiendo una merienda en un campo de lavanda.  \n- **\"AROMAHÉRBA\"**: Letrero en la tercera fila, primera columna, probablemente el nombre del negocio o lugar.  \n\n\n### 4) Hashtags visibles  \nNo se observan hashtags visibles en ninguna de las imágenes de la galería. Los captions (si los hay) no incluyen texto visible en la captura.  \n\n\n### 5) Número de likes/comentarios si se ven  \nNo se pueden ver los números de likes o comentarios, ya que la captura muestra la vista de la galería de posts (no los detalles de cada publicación individual).  \n\n\n### 6) Tono del contenido  \nEl tono es **sereno, acogedor y nostálgico**, con un enfoque en la **calidad de vida rural, la conexión con la naturaleza y la gastronomía artesanal**. Las imágenes transmiten:  \n- **Relax**: Paisajes verdes, flores de lavanda y ambientes tranquilos.  \n- **Calidez**: Comidas compartidas, tés y postres caseros.  \n- **Autenticidad**: Detalles como el reloj de arena, el nido de pájaro y el letrero \"AROMAHÉRBA\" sugieren un negocio familiar o de slow living.  \n\nEl contenido busca atraer a una audiencia que valora la paz, la naturaleza y experiencias culinarias únicas.",
+        "role": "assistant"
+      }
+    }
+  ],
+  "created": 1782758837,
+  "id": "20260630024655d9e4828a72fe47e3",
+  "model": "glm-4.6v",
+  "object": "chat.completion",
+  "request_id": "20260630024655d9e4828a72fe47e3",
+  "usage": {
+    "completion_tokens": 832,
+    "completion_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "prompt_tokens": 2788,
+    "prompt_tokens_details": {
+      "cached_tokens": 10
+    },
+    "total_tokens": 3620
+  }
+}

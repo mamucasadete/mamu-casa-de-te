@@ -1,0 +1,111 @@
+'use client'
+
+import { motion } from "framer-motion";
+import { Cookie, Coffee, Flower2, Croissant } from "lucide-react";
+
+const SPECIALTIES = [
+  {
+    icon: Cookie,
+    title: "Waffles de lavanda",
+    description:
+      "Nuestra estrella. Masa tibia con esencia de lavanda del campo, miel silvestre y frutas de estación. Servidos con crema chantilly infusionada.",
+    image: "https://images.unsplash.com/photo-1562376552-0d160a2f238d?auto=format&fit=crop&w=800&q=80",
+    accent: "#8B7BA8",
+  },
+  {
+    icon: Coffee,
+    title: "Infusiones de la casa",
+    description:
+      "Té negro con lavanda, manzanilla serrana, hierbas frescas del jardín. Teteras de porcelana que rinden tres tazas, servidas con miel pura.",
+    image: "https://images.unsplash.com/photo-1597318181409-cf64d0b5d8a2?auto=format&fit=crop&w=800&q=80",
+    accent: "#5F7558",
+  },
+  {
+    icon: Croissant,
+    title: "Panes saborizados",
+    description:
+      "Pan de campo con hierbas, focaccia de lavanda, scones tibios con mermelada de frutos rojos. Hechos a mano cada mañana.",
+    image: "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=800&q=80",
+    accent: "#A87D5E",
+  },
+  {
+    icon: Flower2,
+    title: "Postres de estación",
+    description:
+      "Tortas de lavanda y limón, budines, brownies con nuez, cheesecake con miel. Una carta que cambia con lo que da el campo.",
+    image: "https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=800&q=80",
+    accent: "#C9A87C",
+  },
+];
+
+export function Especialidades() {
+  return (
+    <section id="especialidades" className="relative py-20 lg:py-28 bg-[#FFFBF4]">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="max-w-3xl mx-auto text-center"
+        >
+          <span className="font-accent italic text-[#6D5D8A] text-xl">Lo que hacemos</span>
+          <h2 className="mt-2 font-serif text-3xl sm:text-4xl lg:text-5xl font-medium text-[#3D3530] text-balance">
+            Especialidades con lavanda
+          </h2>
+          <p className="mt-5 text-[#3D3530]/75 leading-relaxed">
+            Cada producto nace del cultivo de Aromahérba. La lavanda la cosechamos nosotras,
+            las hierbas son del jardín y los postres se hornean el mismo día. Cuatro propuestas
+            que definieron la identidad de MAMU.
+          </p>
+        </motion.div>
+
+        <div className="mt-14 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {SPECIALTIES.map((item, idx) => {
+            const Icon = item.icon;
+            return (
+              <motion.article
+                key={item.title}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ duration: 0.6, delay: idx * 0.1 }}
+                className="group relative overflow-hidden rounded-2xl bg-[#FFFBF4] border border-[#E0D4BD] shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-1"
+              >
+                <div className="relative aspect-[4/3] overflow-hidden">
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#3D3530]/40 to-transparent" />
+                  <div
+                    className="absolute top-4 left-4 h-11 w-11 rounded-full bg-[#FBF6EE] flex items-center justify-center shadow-md"
+                    style={{ color: item.accent }}
+                  >
+                    <Icon className="h-5 w-5" strokeWidth={1.8} />
+                  </div>
+                </div>
+                <div className="p-6">
+                  <h3 className="font-serif text-xl font-medium text-[#3D3530]">
+                    {item.title}
+                  </h3>
+                  <p className="mt-2 text-sm text-[#6B5F55] leading-relaxed">
+                    {item.description}
+                  </p>
+                </div>
+              </motion.article>
+            );
+          })}
+        </div>
+
+        <div className="mt-12 text-center">
+          <p className="font-accent italic text-[#6B5F55]">
+            “Cada taza cuenta una historia de campo, sol y manos serranas.”
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+}
