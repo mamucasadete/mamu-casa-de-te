@@ -1,0 +1,54 @@
+{
+  "name": "MAMU Casa de Té — Meriendas de Campo",
+  "short_name": "MAMU Casa de Té",
+  "description": "Casa de té y meriendas de campo con especialidades de lavanda en Aromahérba, Calmayo, Córdoba. Waffles de lavanda, infusiones y panes artesanales.",
+  "lang": "es-AR",
+  "dir": "ltr",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#FBF6EE",
+  "theme_color": "#6D5D8A",
+  "categories": ["food", "lifestyle", "travel"],
+  "icons": [
+    {
+      "src": "/images/favicon.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/images/favicon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/images/logo-mamu.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Reservar mesa",
+      "short_name": "Reservar",
+      "description": "Hacer una reserva por WhatsApp",
+      "url": "/#reservas"
+    },
+    {
+      "name": "Ver el menú",
+      "short_name": "Menú",
+      "description": "Carta de meriendas, waffles, infusiones",
+      "url": "/#menu"
+    },
+    {
+      "name": "Cómo llegar",
+      "short_name": "Ubicación",
+      "description": "Mapa y dirección a Calmayo",
+      "url": "/#como-llegar"
+    }
+  ]
+}

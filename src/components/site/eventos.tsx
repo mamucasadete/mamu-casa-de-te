@@ -12,7 +12,7 @@ const EVENTS = [
       "El evento más esperado del año en Aromahérba. Una jornada de cosecha de lavanda al amanecer, feria de productores serranos, música en vivo y meriendas temáticas. Llegá temprano y llevate flores a casa.",
     cta: "Consulta fecha exacta",
     accent: "#8B7BA8",
-    image: "https://images.unsplash.com/photo-1611909023032-2d6b3134ecba?auto=format&fit=crop&w=1000&q=80",
+    image: "/images/paseo-lavanda.jpg",
     featured: true,
   },
   {
@@ -23,7 +23,7 @@ const EVENTS = [
       "Una celebración del Valle de Calamuchita en la que MAMU participa junto a otros cocineros y productores locales. Menú especial de tres pasos con productos de la región.",
     cta: "Reservar mesa para el evento",
     accent: "#A87D5E",
-    image: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=800&q=80",
+    image: "/images/calmayo-gastronomico-stand.jpg",
   },
   {
     icon: Music,
@@ -33,7 +33,7 @@ const EVENTS = [
       "Cada vez que hay feriado prolongado, recibimos artistas locales que tocan folklore y música de autor mientras se sirve la merienda. Una pausa que se convierte en recuerdo.",
     cta: "Ver próximos fines de semana",
     accent: "#5F7558",
-    image: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=800&q=80",
+    image: "/images/patio-nocturno.jpg",
   },
 ];
 
@@ -75,12 +75,16 @@ export function Eventos() {
                 <div
                   className={`relative overflow-hidden ${event.featured ? "aspect-[4/3] lg:aspect-[4/5]" : "aspect-[4/3]"}`}
                 >
-                  <img
-                    src={event.image}
-                    alt={event.title}
-                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                    loading="lazy"
-                  />
+                  <picture>
+                    <source type="image/avif" srcSet={event.image.replace(/\.jpg$/, ".avif")} />
+                    <source type="image/webp" srcSet={event.image.replace(/\.jpg$/, ".webp")} />
+                    <img
+                      src={event.image}
+                      alt={`${event.title} — MAMU Casa de Té en Calmayo, Córdoba`}
+                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      loading="lazy"
+                    />
+                  </picture>
                   <div className="absolute inset-0 bg-gradient-to-t from-[#3D3530]/85 via-[#3D3530]/30 to-transparent" />
                   <div
                     className="absolute top-4 left-4 h-11 w-11 rounded-full bg-[#FBF6EE] flex items-center justify-center shadow-md"

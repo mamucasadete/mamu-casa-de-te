@@ -22,25 +22,33 @@ export function SobreMamu() {
             className="relative order-2 lg:order-1"
           >
             <div className="relative aspect-[4/5] rounded-[2rem] overflow-hidden shadow-2xl">
-              <img
-                src={AROMA_IMG}
-                alt="Vista panorámica del predio de Aromahérba en Calmayo, Córdoba"
-                className="h-full w-full object-cover"
-              />
+              <picture>
+                <source type="image/avif" srcSet="/images/panoramica-rural.avif" />
+                <source type="image/webp" srcSet="/images/panoramica-rural.webp" />
+                <img
+                  src="/images/panoramica-rural.jpg"
+                  alt="Vista aérea del paisaje rural de Calmayo, Valle de Calamuchita, Córdoba — campos, caminos y montañas"
+                  className="h-full w-full object-cover"
+                />
+              </picture>
             </div>
-            {/* Floating small image */}
+            {/* Floating small image — merienda completa */}
             <div className="absolute -bottom-8 -right-4 sm:-right-8 w-40 h-48 sm:w-56 sm:h-64 rounded-2xl overflow-hidden shadow-xl border-4 border-[#FBF6EE]">
-              <img
-                src={TEA_POUR_IMG}
-                alt="Té de lavanda servido en taza de vidrio con tetera y panecillos"
-                className="h-full w-full object-cover"
-              />
+              <picture>
+                <source type="image/avif" srcSet="/images/merienda-campo.avif" />
+                <source type="image/webp" srcSet="/images/merienda-campo.webp" />
+                <img
+                  src="/images/merienda-campo.jpg"
+                  alt="Merienda de campo en MAMU Casa de Té — tetera de vidrio con té, pastel artesanal, reloj de arena y lavanda"
+                  className="h-full w-full object-cover"
+                />
+              </picture>
             </div>
             {/* Decorative badge with real logo */}
             <div className="absolute -top-6 -left-6 bg-[#FBF6EE] rounded-full h-28 w-28 sm:h-32 sm:w-32 flex items-center justify-center shadow-xl rotate-[-8deg] border border-[#E0D4BD]">
               <img
                 src={LOGO_SEAL}
-                alt="Sello de MAMU Casa de Té"
+                alt="Sello del logo de MAMU Casa de Té en Calmayo, Córdoba"
                 className="h-24 w-24 sm:h-28 sm:w-28 object-contain"
               />
             </div>

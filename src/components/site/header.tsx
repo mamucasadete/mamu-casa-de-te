@@ -10,6 +10,7 @@ const NAV_LINKS = [
   { href: "#menu", label: "Menú" },
   { href: "#galeria", label: "Galería" },
   { href: "#eventos", label: "Eventos" },
+  { href: "#faq", label: "Preguntas" },
   { href: "#como-llegar", label: "Cómo llegar" },
 ];
 

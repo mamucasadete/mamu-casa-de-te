@@ -1,53 +1,61 @@
 'use client'
 
 import { motion } from "framer-motion";
-import { Camera } from "lucide-react";
+import { Camera, ImageIcon } from "lucide-react";
 
 type Photo = {
-  src: string;
+  src?: string; // optional — if undefined, show elegant placeholder
   alt: string;
   span?: "tall" | "wide" | "normal";
 };
 
+// Only real photos for now. Empty slots show elegant placeholders until user provides more.
 const PHOTOS: Photo[] = [
   {
     src: "/images/ramo-lavandas.jpg",
-    alt: "Ramo de lavandas recién cosechadas en el campo de Aromahérba",
+    alt: "Ramo de lavandas recién cosechadas en el campo de Aromahérba, Calmayo, Córdoba",
     span: "tall",
   },
   {
     src: "/images/waffle-lavanda.jpg",
-    alt: "Waffle de lavanda con frutas, chocolate y nueces — la estrella de MAMU",
+    alt: "Waffle de lavanda con frutas, chocolate y nueces — especialidad de MAMU Casa de Té en Calmayo",
   },
   {
     src: "/images/taza-te.jpg",
-    alt: "Tetera de vidrio con té rojo, taza y panecillos artesanales",
+    alt: "Tetera de vidrio con té rojo, taza y panecillos artesanales servidos en MAMU Casa de Té",
   },
   {
-    src: "/images/predio-panoramica.jpg",
-    alt: "Vista panorámica del predio de Aromahérba en Calmayo, Córdoba",
+    src: "/images/panes-postres.jpg",
+    alt: "Tabla de panes artesanales, croissants y bollos con azúcar — repostería de MAMU Casa de Té",
     span: "wide",
   },
   {
-    src: "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=800&q=80",
-    alt: "Panes artesanales recién horneados",
+    src: "/images/panoramica-rural.jpg",
+    alt: "Vista aérea del paisaje rural de Calmayo, Valle de Calamuchita, Córdoba — campos, caminos y montañas",
   },
   {
-    src: "https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=800&q=80",
-    alt: "Postre de la casa con flores de lavanda",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1611909023032-2d6b3134ecba?auto=format&fit=crop&w=800&q=80",
-    alt: "Campo de lavanda con sierras al fondo",
+    src: "/images/hero-campo-lavanda.jpg",
+    alt: "Campo de lavanda en flor al atardecer en Calmayo, Valle de Calamuchita, Córdoba",
     span: "tall",
   },
   {
-    src: "https://images.unsplash.com/photo-1572286258217-215cf8e16567?auto=format&fit=crop&w=800&q=80",
-    alt: "Taza de té con flores de lavanda frescas",
+    src: "/images/merienda-campo.jpg",
+    alt: "Merienda de campo servida en MAMU Casa de Té — tetera de vidrio con té, pastel artesanal, reloj de arena y frasco con lavanda",
   },
   {
-    src: "https://images.unsplash.com/photo-1567538096631-e0cbf1212c34?auto=format&fit=crop&w=800&q=80",
-    alt: "Mesa exterior con vista al campo",
+    src: "/images/patio-nocturno.jpg",
+    alt: "Patio exterior de MAMU Casa de Té al atardecer — mesas con mantel blanco, luces colgantes en el árbol y carpa",
+    span: "wide",
+  },
+  {
+    src: "/images/interior-1.jpg",
+    alt: "Interior de MAMU Casa de Té — mesas con mantel blanco, pared de ladrillo, estantería con productos y mostrador",
+    span: "wide",
+  },
+  {
+    src: "/images/interior-2.jpg",
+    alt: "Salón interior de MAMU Casa de Té — mesas, sillas de madera, sofá turquesa y cuadros en pared de ladrillo",
+    span: "wide",
   },
 ];
 
@@ -80,27 +88,51 @@ export function Galeria() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true, margin: "-40px" }}
               transition={{ duration: 0.5, delay: idx * 0.05 }}
-              className={`group relative overflow-hidden rounded-2xl bg-[#EFE6D6] ${
+              className={`group relative overflow-hidden rounded-2xl ${
                 photo.span === "tall"
                   ? "row-span-2 aspect-[3/4] sm:aspect-auto"
                   : photo.span === "wide"
                   ? "col-span-2 aspect-[2/1] sm:aspect-[2/1]"
                   : "aspect-square"
-              }`}
+              } ${photo.src ? "bg-[#EFE6D6]" : "bg-gradient-to-br from-[#EFE6D6] to-[#E8DCC4] border border-dashed border-[#D5C7A8]"}`}
             >
-              <img
-                src={photo.src}
-                alt={photo.alt}
-                className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
-                loading="lazy"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#3D3530]/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              <figcaption className="absolute bottom-3 left-3 right-3 text-white text-xs sm:text-sm font-accent italic opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300">
-                {photo.alt}
-              </figcaption>
-              <div className="absolute top-3 right-3 h-7 w-7 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                <Camera className="h-3.5 w-3.5 text-white" />
-              </div>
+              {photo.src ? (
+                <>
+                  <picture>
+                    <source
+                      type="image/avif"
+                      srcSet={photo.src.replace(/\.jpg$/, ".avif")}
+                    />
+                    <source
+                      type="image/webp"
+                      srcSet={photo.src.replace(/\.jpg$/, ".webp")}
+                    />
+                    <img
+                      src={photo.src}
+                      alt={photo.alt}
+                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                      loading="lazy"
+                    />
+                  </picture>
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#3D3530]/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <figcaption className="absolute bottom-3 left-3 right-3 text-white text-xs sm:text-sm font-accent italic opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300">
+                    {photo.alt}
+                  </figcaption>
+                  <div className="absolute top-3 right-3 h-7 w-7 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                    <Camera className="h-3.5 w-3.5 text-white" />
+                  </div>
+                </>
+              ) : (
+                // Elegant placeholder for photos coming soon
+                <div className="h-full w-full flex flex-col items-center justify-center gap-3 px-4 text-center">
+                  <div className="h-12 w-12 rounded-full bg-[#FBF6EE]/60 flex items-center justify-center">
+                    <ImageIcon className="h-5 w-5 text-[#A89A7E]" strokeWidth={1.5} />
+                  </div>
+                  <span className="font-accent italic text-xs text-[#A89A7E] leading-tight">
+                    {photo.alt}
+                  </span>
+                </div>
+              )}
             </motion.figure>
           ))}
         </div>

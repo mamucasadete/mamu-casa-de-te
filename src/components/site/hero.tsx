@@ -4,19 +4,44 @@ import { motion } from "framer-motion";
 import { CalendarHeart, MapPin, Clock, ArrowDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-const HERO_IMG = "/images/predio-panoramica.jpg";
+const HERO_ALT = "Campo de lavanda en flor al atardecer en Calmayo, Valle de Calamuchita, Córdoba — bicicleta blanca entre las flores";
 
 export function Hero() {
   return (
     <section id="top" className="relative min-h-[100svh] flex items-center justify-center overflow-hidden">
-      {/* Background */}
+      {/* Background — multi-format, responsive image with maximum quality */}
       <div className="absolute inset-0">
-        <img
-          src={HERO_IMG}
-          alt="Vista panorámica del predio de Aromahérba en Calmayo, Córdoba — campos y montañas"
-          className="h-full w-full object-cover object-center"
-          fetchPriority="high"
-        />
+        <picture>
+          {/* Mobile: smaller image for fast loading on phones */}
+          <source
+            media="(max-width: 768px)"
+            type="image/webp"
+            srcSet="/images/hero-campo-lavanda-mobile.webp"
+          />
+          {/* Retina displays: 2x resolution */}
+          <source
+            media="(min-width: 769px) and (-webkit-min-device-pixel-ratio: 2)"
+            type="image/webp"
+            srcSet="/images/hero-campo-lavanda-2x.webp"
+          />
+          {/* Standard desktop: AVIF first (best compression) */}
+          <source
+            type="image/avif"
+            srcSet="/images/hero-campo-lavanda.avif"
+          />
+          {/* Then WebP lossless (max quality) */}
+          <source
+            type="image/webp"
+            srcSet="/images/hero-campo-lavanda.webp"
+          />
+          {/* Fallback: JPG q95 4:4:4 for older browsers */}
+          <img
+            src="/images/hero-campo-lavanda.jpg"
+            alt={HERO_ALT}
+            className="h-full w-full object-cover object-center"
+            fetchPriority="high"
+          />
+        </picture>
         <div className="absolute inset-0 bg-gradient-to-b from-[#3D3530]/55 via-[#3D3530]/35 to-[#3D3530]/75" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#6D5D8A]/30 via-transparent to-transparent" />
       </div>

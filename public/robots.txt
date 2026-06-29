@@ -1,7 +1,18 @@
+# robots.txt — MAMU Casa de Té
+# https://mamu-casa-de-te.vercel.app
+
+# Permite indexación completa a todos los bots importantes
 User-agent: Googlebot
+Allow: /
+Allow: /images/
+
+User-agent: Googlebot-Image
 Allow: /
 
 User-agent: Bingbot
+Allow: /
+
+User-agent: DuckDuckBot
 Allow: /
 
 User-agent: Twitterbot
@@ -10,5 +21,40 @@ Allow: /
 User-agent: facebookexternalhit
 Allow: /
 
+User-agent: LinkedInBot
+Allow: /
+
+User-agent: WhatsApp
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: Yandex
+Allow: /
+
+# Bots maliciosos o innecesarios
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+User-agent: PetalBot
+Crawl-delay: 10
+
+# Bloquear rutas internas
 User-agent: *
 Allow: /
+Disallow: /api/
+Disallow: /_next/
+Disallow: /private/
+
+# Sitemap
+Sitemap: https://mamu-casa-de-te.vercel.app/sitemap.xml

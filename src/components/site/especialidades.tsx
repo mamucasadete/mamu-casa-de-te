@@ -3,13 +3,23 @@
 import { motion } from "framer-motion";
 import { Cookie, Coffee, Flower2, Croissant } from "lucide-react";
 
-const SPECIALTIES = [
+type Specialty = {
+  icon: typeof Cookie;
+  title: string;
+  description: string;
+  image?: string; // optional — if not provided, show elegant placeholder
+  alt: string;
+  accent: string;
+};
+
+const SPECIALTIES: Specialty[] = [
   {
     icon: Cookie,
     title: "Waffles de lavanda",
     description:
       "Nuestra estrella. Masa tibia con esencia de lavanda del campo, miel silvestre y frutas de estación. Servidos con crema chantilly infusionada.",
     image: "/images/waffle-lavanda.jpg",
+    alt: "Waffle de lavanda con frutas, chocolate, nueces y flor comestible — especialidad de MAMU Casa de Té en Calmayo",
     accent: "#8B7BA8",
   },
   {
@@ -18,6 +28,7 @@ const SPECIALTIES = [
     description:
       "Té negro con lavanda, manzanilla serrana, hierbas frescas del jardín. Teteras de vidrio que rinden tres tazas, servidas con miel pura.",
     image: "/images/taza-te.jpg",
+    alt: "Tetera de vidrio con té rojo servido en taza, con panecillos artesanales — infusión de la casa en MAMU Calmayo",
     accent: "#5F7558",
   },
   {
@@ -26,6 +37,7 @@ const SPECIALTIES = [
     description:
       "Nuestra materia prima. Cosechada a mano en Aromahérba, la usamos en postres, infusiones y productos para llevar. Conocé el cultivo de cerca.",
     image: "/images/ramo-lavandas.jpg",
+    alt: "Ramo de lavanda recién cosechada en el campo de Aromahérba, Calmayo — materia prima de MAMU Casa de Té",
     accent: "#A87D5E",
   },
   {
@@ -33,7 +45,8 @@ const SPECIALTIES = [
     title: "Panes & postres de estación",
     description:
       "Pan de campo con hierbas, focaccia de lavanda, scones tibios, tortas de lavanda y limón. Hechos a mano cada mañana, cambian con la temporada.",
-    image: "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=800&q=80",
+    image: "/images/panes-postres.jpg",
+    alt: "Tabla de panes artesanales, croissants, galletas y bollos con azúcar — repostería casera de MAMU Casa de Té",
     accent: "#C9A87C",
   },
 ];
@@ -73,12 +86,45 @@ export function Especialidades() {
                 className="group relative overflow-hidden rounded-2xl bg-[#FFFBF4] border border-[#E0D4BD] shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-1"
               >
                 <div className="relative aspect-[4/3] overflow-hidden">
-                  <img
-                    src={item.image}
-                    alt={item.title}
-                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                    loading="lazy"
-                  />
+                  {item.image ? (
+                    <picture>
+                      {/* AVIF first (best compression) */}
+                      <source
+                        type="image/avif"
+                        srcSet={item.image.replace(/\.jpg$/, ".avif")}
+                      />
+                      {/* WebP lossless */}
+                      <source
+                        type="image/webp"
+                        srcSet={item.image.replace(/\.jpg$/, ".webp")}
+                      />
+                      {/* Fallback JPG */}
+                      <img
+                        src={item.image}
+                        alt={item.alt}
+                        className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                        loading="lazy"
+                      />
+                    </picture>
+                  ) : (
+                    // Elegant placeholder for cards without photo yet
+                    <div
+                      className="h-full w-full flex flex-col items-center justify-center gap-3"
+                      style={{
+                        background: `linear-gradient(135deg, ${item.accent}15 0%, ${item.accent}25 100%)`,
+                      }}
+                    >
+                      <div
+                        className="h-16 w-16 rounded-full flex items-center justify-center"
+                        style={{ backgroundColor: `${item.accent}20`, color: item.accent }}
+                      >
+                        <Icon className="h-8 w-8" strokeWidth={1.5} />
+                      </div>
+                      <span className="font-accent italic text-xs text-[#6B5F55]/60">
+                        Próximamente foto
+                      </span>
+                    </div>
+                  )}
                   <div className="absolute inset-0 bg-gradient-to-t from-[#3D3530]/40 to-transparent" />
                   <div
                     className="absolute top-4 left-4 h-11 w-11 rounded-full bg-[#FBF6EE] flex items-center justify-center shadow-md"
