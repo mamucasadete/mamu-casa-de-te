@@ -11,21 +11,21 @@ type Photo = {
 
 const PHOTOS: Photo[] = [
   {
-    src: "https://images.unsplash.com/photo-1499002238440-d264edd596ec?auto=format&fit=crop&w=800&q=80",
-    alt: "Campo de lavanda en plena floración, Calmayo",
+    src: "/images/ramo-lavandas.jpg",
+    alt: "Ramo de lavandas recién cosechadas en el campo de Aromahérba",
     span: "tall",
   },
   {
-    src: "https://images.unsplash.com/photo-1562376552-0d160a2f238d?auto=format&fit=crop&w=800&q=80",
-    alt: "Waffles de lavanda con crema y frutos rojos",
+    src: "/images/waffle-lavanda.jpg",
+    alt: "Waffle de lavanda con frutas, chocolate y nueces — la estrella de MAMU",
   },
   {
-    src: "https://images.unsplash.com/photo-1597318181409-cf64d0b5d8a2?auto=format&fit=crop&w=800&q=80",
-    alt: "Tetera de porcelana sirviendo té de lavanda",
+    src: "/images/taza-te.jpg",
+    alt: "Tetera de vidrio con té rojo, taza y panecillos artesanales",
   },
   {
-    src: "https://images.unsplash.com/photo-1556679343-c7306c1976bc?auto=format&fit=crop&w=800&q=80",
-    alt: "Mesa servida para merendar en el jardín",
+    src: "/images/predio-panoramica.jpg",
+    alt: "Vista panorámica del predio de Aromahérba en Calmayo, Córdoba",
     span: "wide",
   },
   {

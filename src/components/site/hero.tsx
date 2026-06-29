@@ -4,8 +4,7 @@ import { motion } from "framer-motion";
 import { CalendarHeart, MapPin, Clock, ArrowDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-const HERO_IMG =
-  "https://images.unsplash.com/photo-1499002238440-d264edd596ec?auto=format&fit=crop&w=1920&q=80";
+const HERO_IMG = "/images/predio-panoramica.jpg";
 
 export function Hero() {
   return (
@@ -14,8 +13,8 @@ export function Hero() {
       <div className="absolute inset-0">
         <img
           src={HERO_IMG}
-          alt="Campo de lavanda en flor en Calmayo, Córdoba"
-          className="h-full w-full object-cover"
+          alt="Vista panorámica del predio de Aromahérba en Calmayo, Córdoba — campos y montañas"
+          className="h-full w-full object-cover object-center"
           fetchPriority="high"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-[#3D3530]/55 via-[#3D3530]/35 to-[#3D3530]/75" />

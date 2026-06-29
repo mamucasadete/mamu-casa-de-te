@@ -22,15 +22,22 @@ export function SiteFooter() {
         <div className="grid gap-10 lg:grid-cols-4">
           {/* Brand */}
           <div className="lg:col-span-1">
-            <div className="flex items-baseline">
-              <span className="font-serif text-3xl font-semibold tracking-[0.2em] text-[#F0E8D9]">
-                MAMU
-              </span>
+            <div className="flex items-center gap-3">
+              <img
+                src="/images/logo-mamu.png"
+                alt="Logo de MAMU Casa de Té"
+                className="h-14 w-14 object-contain"
+              />
+              <div className="flex flex-col">
+                <span className="font-serif text-2xl font-semibold tracking-[0.18em] text-[#F0E8D9]">
+                  MAMU
+                </span>
+                <span className="font-accent italic text-xs text-[#B5A8C9] -mt-0.5">
+                  Casa de té · Meriendas de campo
+                </span>
+              </div>
             </div>
-            <p className="mt-1 font-accent italic text-sm text-[#B5A8C9]">
-              Casa de té · Meriendas de campo
-            </p>
-            <p className="mt-4 text-sm text-[#F0E8D9]/70 leading-relaxed max-w-xs">
+            <p className="mt-5 text-sm text-[#F0E8D9]/70 leading-relaxed max-w-xs">
               Una merienda entre flores de lavanda en Calmayo, Valle de Calamuchita.
               Slow living, sabores artesanales y mucho amor serrano.
             </p>

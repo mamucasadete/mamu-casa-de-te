@@ -9,31 +9,31 @@ const SPECIALTIES = [
     title: "Waffles de lavanda",
     description:
       "Nuestra estrella. Masa tibia con esencia de lavanda del campo, miel silvestre y frutas de estación. Servidos con crema chantilly infusionada.",
-    image: "https://images.unsplash.com/photo-1562376552-0d160a2f238d?auto=format&fit=crop&w=800&q=80",
+    image: "/images/waffle-lavanda.jpg",
     accent: "#8B7BA8",
   },
   {
     icon: Coffee,
     title: "Infusiones de la casa",
     description:
-      "Té negro con lavanda, manzanilla serrana, hierbas frescas del jardín. Teteras de porcelana que rinden tres tazas, servidas con miel pura.",
-    image: "https://images.unsplash.com/photo-1597318181409-cf64d0b5d8a2?auto=format&fit=crop&w=800&q=80",
+      "Té negro con lavanda, manzanilla serrana, hierbas frescas del jardín. Teteras de vidrio que rinden tres tazas, servidas con miel pura.",
+    image: "/images/taza-te.jpg",
     accent: "#5F7558",
   },
   {
-    icon: Croissant,
-    title: "Panes saborizados",
+    icon: Flower2,
+    title: "Lavanda del campo",
     description:
-      "Pan de campo con hierbas, focaccia de lavanda, scones tibios con mermelada de frutos rojos. Hechos a mano cada mañana.",
-    image: "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=800&q=80",
+      "Nuestra materia prima. Cosechada a mano en Aromahérba, la usamos en postres, infusiones y productos para llevar. Conocé el cultivo de cerca.",
+    image: "/images/ramo-lavandas.jpg",
     accent: "#A87D5E",
   },
   {
-    icon: Flower2,
-    title: "Postres de estación",
+    icon: Croissant,
+    title: "Panes & postres de estación",
     description:
-      "Tortas de lavanda y limón, budines, brownies con nuez, cheesecake con miel. Una carta que cambia con lo que da el campo.",
-    image: "https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=800&q=80",
+      "Pan de campo con hierbas, focaccia de lavanda, scones tibios, tortas de lavanda y limón. Hechos a mano cada mañana, cambian con la temporada.",
+    image: "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=800&q=80",
     accent: "#C9A87C",
   },
 ];

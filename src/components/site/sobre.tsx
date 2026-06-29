@@ -4,10 +4,9 @@ import { motion } from "framer-motion";
 import { Leaf, Sparkles } from "lucide-react";
 import { LavenderDivider } from "./divider";
 
-const AROMA_IMG =
-  "https://images.unsplash.com/photo-1611909023032-2d6b3134ecba?auto=format&fit=crop&w=1200&q=80";
-const TEA_POUR_IMG =
-  "https://images.unsplash.com/photo-1597318181409-cf64d0b5d8a2?auto=format&fit=crop&w=1000&q=80";
+const AROMA_IMG = "/images/predio-panoramica.jpg";
+const TEA_POUR_IMG = "/images/taza-te.jpg";
+const LOGO_SEAL = "/images/logo-mamu.png";
 
 export function SobreMamu() {
   return (
@@ -25,7 +24,7 @@ export function SobreMamu() {
             <div className="relative aspect-[4/5] rounded-[2rem] overflow-hidden shadow-2xl">
               <img
                 src={AROMA_IMG}
-                alt="Campo de lavanda de Aromahérba en Calmayo, Córdoba"
+                alt="Vista panorámica del predio de Aromahérba en Calmayo, Córdoba"
                 className="h-full w-full object-cover"
               />
             </div>
@@ -33,14 +32,17 @@ export function SobreMamu() {
             <div className="absolute -bottom-8 -right-4 sm:-right-8 w-40 h-48 sm:w-56 sm:h-64 rounded-2xl overflow-hidden shadow-xl border-4 border-[#FBF6EE]">
               <img
                 src={TEA_POUR_IMG}
-                alt="Té de lavanda servido en taza artesanal"
+                alt="Té de lavanda servido en taza de vidrio con tetera y panecillos"
                 className="h-full w-full object-cover"
               />
             </div>
-            {/* Decorative badge */}
-            <div className="absolute -top-4 -left-4 bg-[#6D5D8A] text-[#FBF6EE] rounded-full h-24 w-24 flex flex-col items-center justify-center text-center shadow-lg rotate-[-8deg]">
-              <Leaf className="h-5 w-5 mb-1" />
-              <span className="font-accent italic text-[10px] leading-tight px-2">Desde el<br/>campo</span>
+            {/* Decorative badge with real logo */}
+            <div className="absolute -top-6 -left-6 bg-[#FBF6EE] rounded-full h-28 w-28 sm:h-32 sm:w-32 flex items-center justify-center shadow-xl rotate-[-8deg] border border-[#E0D4BD]">
+              <img
+                src={LOGO_SEAL}
+                alt="Sello de MAMU Casa de Té"
+                className="h-24 w-24 sm:h-28 sm:w-28 object-contain"
+              />
             </div>
           </motion.div>
 
