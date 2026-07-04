@@ -11,10 +11,10 @@
 const {
   Document, Packer, Paragraph, TextRun, Table, TableRow, TableCell,
   WidthType, HeadingLevel, AlignmentType, BorderStyle, ShadingType,
-  PageOrientation, Header, Footer, PageNumber, LevelFormat,
-  convertInchesToTwip,
+  PageOrientation, Header, Footer, PageNumber,
 } = require("docx");
 const fs = require("fs");
+// eslint-disable-next-line @typescript-eslint/no-require-imports
 
 // =========================================================================
 // PALETA DE COLORES (misma que el sitio MAMU)

@@ -1,16 +1,44 @@
 'use client'
 
-import { motion } from "framer-motion";
+import { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { CalendarHeart, MapPin, Clock, ArrowDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const HERO_ALT = "Campo de lavanda en flor al atardecer en Calmayo, Valle de Calamuchita, Córdoba — bicicleta blanca entre las flores";
 
 export function Hero() {
+  const containerRef = useRef<HTMLElement>(null);
+
+  // useScroll nos da el progreso del scroll dentro de la sección del hero (0 al inicio, 1 al final)
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end start"],
+  });
+
+  // Parallax: la imagen de fondo se mueve hacia abajo más lento que el contenido
+  // (efecto profundidad). Máximo 15% del alto del hero.
+  const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "18%"]);
+  // Parallax inverso sutil para el contenido (se va más rápido que el scroll, da sensación 3D)
+  const contentY = useTransform(scrollYProgress, [0, 1], ["0%", "-30%"]);
+  // El contenido también se va haciendo más opaco/transparente al hacer scroll
+  const contentOpacity = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
+  // La decoración SVG se mueve más lento (lejos)
+  const decoY = useTransform(scrollYProgress, [0, 1], ["0%", "8%"]);
+  // El gradiente oscuro se intensifica al hacer scroll
+  const overlayOpacity = useTransform(scrollYProgress, [0, 1], [1, 0.85]);
+  // El indicador de scroll se va desvaneciendo
+  const scrollCueOpacity = useTransform(scrollYProgress, [0, 0.15], [1, 0]);
+
   return (
-    <section id="top" className="relative min-h-[100svh] flex items-center justify-center overflow-hidden">
-      {/* Background — multi-format, responsive image with maximum quality */}
-      <div className="absolute inset-0">
+    <section
+      ref={containerRef}
+      id="top"
+      className="relative min-h-[100svh] flex items-center justify-center overflow-hidden"
+      style={{ position: "relative" }}
+    >
+      {/* Background con parallax — la imagen se mueve más lento que el scroll */}
+      <motion.div className="absolute inset-0" style={{ y: bgY, scale: 1.18 }}>
         <picture>
           {/* Mobile: smaller image for fast loading on phones */}
           <source
@@ -42,12 +70,20 @@ export function Hero() {
             fetchPriority="high"
           />
         </picture>
-        <div className="absolute inset-0 bg-gradient-to-b from-[#3D3530]/55 via-[#3D3530]/35 to-[#3D3530]/75" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#6D5D8A]/30 via-transparent to-transparent" />
-      </div>
+      </motion.div>
 
-      {/* Decorative corner */}
-      <div className="absolute top-24 right-6 hidden lg:block opacity-50">
+      {/* Overlays con gradiente — se mantienen fijos para no romper legibilidad */}
+      <motion.div
+        className="absolute inset-0 bg-gradient-to-b from-[#3D3530]/55 via-[#3D3530]/35 to-[#3D3530]/75"
+        style={{ opacity: overlayOpacity }}
+      />
+      <div className="absolute inset-0 bg-gradient-to-t from-[#6D5D8A]/30 via-transparent to-transparent" />
+
+      {/* Decoración SVG esquina superior derecha — parallax sutil (lejos) */}
+      <motion.div
+        className="absolute top-24 right-6 hidden lg:block opacity-50 z-[5]"
+        style={{ y: decoY }}
+      >
         <svg width="120" height="120" viewBox="0 0 120 120" fill="none" className="animate-sway">
           <g stroke="#FBF6EE" strokeWidth="1.2" strokeLinecap="round" fill="none">
             <path d="M60 110 Q 60 60 60 20" />
@@ -59,10 +95,13 @@ export function Hero() {
             <path d="M60 70 Q 80 65 85 80 Q 70 85 60 75" fill="#B5A8C9" fillOpacity="0.6" />
           </g>
         </svg>
-      </div>
+      </motion.div>
 
-      {/* Content */}
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pt-20">
+      {/* Contenido del hero — parallax inverso (se va más rápido) + fade out */}
+      <motion.div
+        className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pt-20"
+        style={{ y: contentY, opacity: contentOpacity }}
+      >
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -124,16 +163,17 @@ export function Hero() {
             </span>
           </motion.div>
         </motion.div>
-      </div>
+      </motion.div>
 
-      {/* Scroll cue */}
-      <a
+      {/* Scroll cue — se desvanece al hacer scroll */}
+      <motion.a
         href="#sobre"
         aria-label="Desplazarse a la siguiente sección"
         className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 text-[#FBF6EE]/70 hover:text-[#FBF6EE] transition-colors animate-float"
+        style={{ opacity: scrollCueOpacity }}
       >
         <ArrowDown className="h-6 w-6" />
-      </a>
+      </motion.a>
     </section>
   );
 }

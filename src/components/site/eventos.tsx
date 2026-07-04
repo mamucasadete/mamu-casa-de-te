@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { CalendarDays, MapPin, Music, Flower2 } from "lucide-react";
+import { ScrollReveal } from "./scroll-reveal";
 
 const EVENTS = [
   {
@@ -62,12 +63,12 @@ export function Eventos() {
           {EVENTS.map((event, idx) => {
             const Icon = event.icon;
             return (
-              <motion.article
+              <ScrollReveal
                 key={event.title}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-60px" }}
-                transition={{ duration: 0.6, delay: idx * 0.1 }}
+                as="article"
+                direction="up"
+                delay={idx * 0.12}
+                duration={0.7}
                 className={`group relative overflow-hidden rounded-3xl bg-[#FFFBF4] border border-[#E0D4BD] shadow-sm hover:shadow-xl transition-all duration-500 ${
                   event.featured ? "lg:row-span-2 lg:col-span-1" : ""
                 }`}
@@ -116,7 +117,7 @@ export function Eventos() {
                     <span aria-hidden>→</span>
                   </a>
                 </div>
-              </motion.article>
+              </ScrollReveal>
             );
           })}
         </div>

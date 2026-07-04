@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Camera, ImageIcon } from "lucide-react";
+import { ScrollReveal } from "./scroll-reveal";
 
 type Photo = {
   src?: string; // optional — if undefined, show elegant placeholder
@@ -82,12 +83,12 @@ export function Galeria() {
 
         <div className="mt-12 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 [grid-auto-flow:dense]">
           {PHOTOS.map((photo, idx) => (
-            <motion.figure
+            <ScrollReveal
               key={idx}
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true, margin: "-40px" }}
-              transition={{ duration: 0.5, delay: idx * 0.05 }}
+              as="figure"
+              direction="up"
+              delay={(idx % 4) * 0.08} // staggering por columna para efecto cascada
+              duration={0.7}
               className={`group relative overflow-hidden rounded-2xl ${
                 photo.span === "tall"
                   ? "row-span-2 aspect-[3/4] sm:aspect-auto"
@@ -133,7 +134,7 @@ export function Galeria() {
                   </span>
                 </div>
               )}
-            </motion.figure>
+            </ScrollReveal>
           ))}
         </div>
 
