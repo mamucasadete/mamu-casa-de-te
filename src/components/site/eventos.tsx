@@ -69,7 +69,7 @@ export function Eventos() {
                 direction="up"
                 delay={idx * 0.12}
                 duration={0.7}
-                className={`group relative overflow-hidden rounded-3xl bg-[#FFFBF4] border border-[#E0D4BD] shadow-sm hover:shadow-xl transition-all duration-500 ${
+                className={`group relative overflow-hidden rounded-3xl bg-[#FFFBF4] border border-[#E0D4BD] shadow-card hover:shadow-float transition-all duration-500 ${
                   event.featured ? "lg:row-span-2 lg:col-span-1" : ""
                 }`}
               >

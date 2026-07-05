@@ -21,7 +21,7 @@ export function SobreMamu() {
             transition={{ duration: 0.8 }}
             className="relative order-2 lg:order-1 px-2 sm:px-0"
           >
-            <div className="relative aspect-[4/5] rounded-[2rem] overflow-hidden shadow-2xl">
+            <div className="relative aspect-[4/5] rounded-[2rem] overflow-hidden shadow-float">
               <picture>
                 <source type="image/avif" srcSet="/images/panoramica-rural.avif" />
                 <source type="image/webp" srcSet="/images/panoramica-rural.webp" />
@@ -33,7 +33,7 @@ export function SobreMamu() {
               </picture>
             </div>
             {/* Floating small image — merienda completa */}
-            <div className="absolute -bottom-6 -right-2 sm:-bottom-8 sm:-right-8 w-36 h-44 sm:w-56 sm:h-64 rounded-2xl overflow-hidden shadow-xl border-4 border-[#FBF6EE]">
+            <div className="absolute -bottom-6 -right-2 sm:-bottom-8 sm:-right-8 w-36 h-44 sm:w-56 sm:h-64 rounded-2xl overflow-hidden shadow-lifted border-4 border-[#FBF6EE]">
               <picture>
                 <source type="image/avif" srcSet="/images/merienda-campo.avif" />
                 <source type="image/webp" srcSet="/images/merienda-campo.webp" />
@@ -45,7 +45,7 @@ export function SobreMamu() {
               </picture>
             </div>
             {/* Decorative badge with real logo */}
-            <div className="absolute -top-4 -left-2 sm:-top-6 sm:-left-6 bg-[#FBF6EE] rounded-full h-24 w-24 sm:h-32 sm:w-32 flex items-center justify-center shadow-xl rotate-[-8deg] border border-[#E0D4BD]">
+            <div className="absolute -top-4 -left-2 sm:-top-6 sm:-left-6 bg-[#FBF6EE] rounded-full h-24 w-24 sm:h-32 sm:w-32 flex items-center justify-center shadow-lifted rotate-[-8deg] border border-[#E0D4BD]">
               <img
                 src={LOGO_SEAL}
                 alt="Sello del logo de MAMU Casa de Té en Calmayo, Córdoba"

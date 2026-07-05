@@ -10,10 +10,12 @@ import { FAQ } from "@/components/site/faq";
 import { Reservas } from "@/components/site/reservas";
 import { SiteFooter } from "@/components/site/footer";
 import { WhatsAppFloat } from "@/components/site/whatsapp-float";
+import { ScrollProgress } from "@/components/site/scroll-progress";
 
 export default function Home() {
   return (
     <div className="min-h-screen flex flex-col bg-background">
+      <ScrollProgress />
       <SiteHeader />
       <main className="flex-1">
         {/* H1 está en el Hero: "Merendá en un campo de lavanda" */}

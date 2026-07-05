@@ -147,7 +147,7 @@ export function Reservas() {
           >
             <form
               onSubmit={handleSubmit}
-              className="rounded-3xl bg-[#FFFBF4] border border-[#E0D4BD] shadow-xl p-6 sm:p-8 lg:p-10"
+              className="rounded-3xl bg-[#FFFBF4] border border-[#E0D4BD] shadow-float p-6 sm:p-8 lg:p-10"
             >
               <div className="grid sm:grid-cols-2 gap-5">
                 {/* Name */}

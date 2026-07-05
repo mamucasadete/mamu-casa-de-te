@@ -33,7 +33,7 @@ export function ComoLlegar() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="lg:col-span-3 rounded-3xl overflow-hidden shadow-lg border border-[#E0D4BD] min-h-[400px] relative bg-[#EFE6D6]"
+            className="lg:col-span-3 rounded-3xl overflow-hidden shadow-lifted border border-[#E0D4BD] min-h-[400px] relative bg-[#EFE6D6]"
           >
             <iframe
               title="Mapa de ubicación de MAMU Casa de Té en Calmayo, Córdoba"

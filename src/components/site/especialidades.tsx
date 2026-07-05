@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { Cookie, Coffee, Flower2, Croissant } from "lucide-react";
 import { ScrollReveal } from "./scroll-reveal";
+import { TiltCard } from "./tilt-card";
 
 type Specialty = {
   icon: typeof Cookie;
@@ -80,68 +81,73 @@ export function Especialidades() {
             return (
               <ScrollReveal
                 key={item.title}
-                as="article"
                 direction="up"
                 delay={idx * 0.1}
                 duration={0.7}
-                className="group relative overflow-hidden rounded-2xl bg-[#FFFBF4] border border-[#E0D4BD] shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-1"
+                className="[perspective:1000px]"
               >
-                <div className="relative aspect-[4/3] overflow-hidden">
-                  {item.image ? (
-                    <picture>
-                      {/* AVIF first (best compression) */}
-                      <source
-                        type="image/avif"
-                        srcSet={item.image.replace(/\.jpg$/, ".avif")}
-                      />
-                      {/* WebP lossless */}
-                      <source
-                        type="image/webp"
-                        srcSet={item.image.replace(/\.jpg$/, ".webp")}
-                      />
-                      {/* Fallback JPG */}
-                      <img
-                        src={item.image}
-                        alt={item.alt}
-                        className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                        loading="lazy"
-                      />
-                    </picture>
-                  ) : (
-                    // Elegant placeholder for cards without photo yet
-                    <div
-                      className="h-full w-full flex flex-col items-center justify-center gap-3"
-                      style={{
-                        background: `linear-gradient(135deg, ${item.accent}15 0%, ${item.accent}25 100%)`,
-                      }}
-                    >
+                <TiltCard
+                  max={8}
+                  scale={1.03}
+                  className="group relative overflow-hidden rounded-2xl bg-[#FFFBF4] border border-[#E0D4BD] shadow-card hover:shadow-float transition-shadow duration-500 h-full"
+                >
+                  <div className="relative aspect-[4/3] overflow-hidden">
+                    {item.image ? (
+                      <picture>
+                        {/* AVIF first (best compression) */}
+                        <source
+                          type="image/avif"
+                          srcSet={item.image.replace(/\.jpg$/, ".avif")}
+                        />
+                        {/* WebP lossless */}
+                        <source
+                          type="image/webp"
+                          srcSet={item.image.replace(/\.jpg$/, ".webp")}
+                        />
+                        {/* Fallback JPG */}
+                        <img
+                          src={item.image}
+                          alt={item.alt}
+                          className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                          loading="lazy"
+                        />
+                      </picture>
+                    ) : (
+                      // Elegant placeholder for cards without photo yet
                       <div
-                        className="h-16 w-16 rounded-full flex items-center justify-center"
-                        style={{ backgroundColor: `${item.accent}20`, color: item.accent }}
+                        className="h-full w-full flex flex-col items-center justify-center gap-3"
+                        style={{
+                          background: `linear-gradient(135deg, ${item.accent}15 0%, ${item.accent}25 100%)`,
+                        }}
                       >
-                        <Icon className="h-8 w-8" strokeWidth={1.5} />
+                        <div
+                          className="h-16 w-16 rounded-full flex items-center justify-center"
+                          style={{ backgroundColor: `${item.accent}20`, color: item.accent }}
+                        >
+                          <Icon className="h-8 w-8" strokeWidth={1.5} />
+                        </div>
+                        <span className="font-accent italic text-xs text-[#6B5F55]/60">
+                          Próximamente foto
+                        </span>
                       </div>
-                      <span className="font-accent italic text-xs text-[#6B5F55]/60">
-                        Próximamente foto
-                      </span>
+                    )}
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#3D3530]/40 to-transparent" />
+                    <div
+                      className="absolute top-4 left-4 h-11 w-11 rounded-full bg-[#FBF6EE] flex items-center justify-center shadow-md"
+                      style={{ color: item.accent }}
+                    >
+                      <Icon className="h-5 w-5" strokeWidth={1.8} />
                     </div>
-                  )}
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#3D3530]/40 to-transparent" />
-                  <div
-                    className="absolute top-4 left-4 h-11 w-11 rounded-full bg-[#FBF6EE] flex items-center justify-center shadow-md"
-                    style={{ color: item.accent }}
-                  >
-                    <Icon className="h-5 w-5" strokeWidth={1.8} />
                   </div>
-                </div>
-                <div className="p-6">
-                  <h3 className="font-serif text-xl font-medium text-[#3D3530]">
-                    {item.title}
-                  </h3>
-                  <p className="mt-2 text-sm text-[#6B5F55] leading-relaxed">
-                    {item.description}
-                  </p>
-                </div>
+                  <div className="p-6">
+                    <h3 className="font-serif text-xl font-medium text-[#3D3530]">
+                      {item.title}
+                    </h3>
+                    <p className="mt-2 text-sm text-[#6B5F55] leading-relaxed">
+                      {item.description}
+                    </p>
+                  </div>
+                </TiltCard>
               </ScrollReveal>
             );
           })}
