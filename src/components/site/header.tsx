@@ -40,7 +40,7 @@ export function SiteHeader() {
             <img
               src="/images/logo-mamu.png"
               alt="Logo de MAMU Casa de Té"
-              className={`h-14 w-14 lg:h-16 lg:w-16 object-contain transition-all duration-500 group-hover:scale-105 ${
+              className={`h-16 w-16 lg:h-20 lg:w-20 object-contain transition-all duration-500 group-hover:scale-105 ${
                 scrolled ? "" : "drop-shadow-[0_2px_8px_rgba(255,255,255,0.4)] brightness-0 invert"
               }`}
               style={scrolled ? {} : { filter: "brightness(0) invert(1)" }}
