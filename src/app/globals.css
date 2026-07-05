@@ -138,10 +138,15 @@
   html {
     scroll-behavior: smooth;
     scroll-padding-top: 5rem;
+    /* Prevenir scroll horizontal a nivel de página */
+    overflow-x: hidden;
   }
   body {
     @apply bg-background text-foreground;
     font-family: var(--font-inter), system-ui, sans-serif;
+    /* Doble seguridad contra scroll horizontal */
+    overflow-x: hidden;
+    width: 100%;
   }
   h1, h2, h3, h4 {
     font-family: var(--font-playfair), Georgia, serif;
