@@ -69,8 +69,8 @@ export function SobreMamu() {
             </h2>
 
             <div className="mt-6 space-y-4 text-[#3D3530]/80 leading-relaxed">
-              <p className="first-letter:font-serif first-letter:text-6xl first-letter:font-semibold first-letter:text-[#6D5D8A] first-letter:mr-2 first-letter:float-left first-letter:leading-[0.85] first-letter:mt-1 first-letter:drop-shadow-sm">
-                <strong className="font-semibold text-[#6D5D8A]">MAMU</strong> nació como una invitación a
+              <p>
+                <strong className="text-[#6D5D8A] font-semibold">MAMU</strong> nació como una invitación a
                 merendar entre flores. En medio del cultivo de lavanda de
                 <strong className="text-[#5F7558] font-semibold"> Aromahérba</strong> —establecimiento
                 serrano en Calmayo, Valle de Calamuchita— abrimos las puertas de nuestra casa de té

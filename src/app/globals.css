@@ -247,21 +247,6 @@
     position: relative;
     z-index: 2;
   }
-
-  /* Ocultar cursor default en desktop (donde se usa CustomCursor) */
-  @media (pointer: fine) {
-    * {
-      cursor: none !important;
-    }
-    /* Inputs y textareas mantienen cursor de texto para mejor UX */
-    input, textarea {
-      cursor: text !important;
-    }
-    /* Selects mantienen cursor pointer */
-    select, [role="combobox"], [role="listbox"] {
-      cursor: pointer !important;
-    }
-  }
 }
 
 /* Transiciones suaves entre secciones — gradientes de 60px en los bordes
