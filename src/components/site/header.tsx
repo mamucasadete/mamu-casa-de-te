@@ -34,20 +34,20 @@ export function SiteHeader() {
       }`}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex h-16 lg:h-20 items-center justify-between">
+        <div className="flex h-20 lg:h-24 items-center justify-between">
           {/* Logo */}
-          <a href="#top" className="flex items-center gap-2.5 group" aria-label="MAMU Casa de Té — Inicio">
+          <a href="#top" className="flex items-center gap-3 sm:gap-3.5 group" aria-label="MAMU Casa de Té — Inicio">
             <img
               src="/images/logo-mamu.png"
               alt="Logo de MAMU Casa de Té"
-              className={`h-11 w-11 lg:h-12 lg:w-12 object-contain transition-all duration-500 group-hover:scale-105 ${
+              className={`h-14 w-14 lg:h-16 lg:w-16 object-contain transition-all duration-500 group-hover:scale-105 ${
                 scrolled ? "" : "drop-shadow-[0_2px_8px_rgba(255,255,255,0.4)] brightness-0 invert"
               }`}
               style={scrolled ? {} : { filter: "brightness(0) invert(1)" }}
             />
             <div className="flex flex-col leading-tight">
               <span
-                className={`font-serif text-xl lg:text-2xl font-semibold tracking-[0.18em] transition-colors ${
+                className={`font-serif text-2xl sm:text-3xl lg:text-[2rem] font-semibold tracking-[0.18em] transition-colors ${
                   scrolled
                     ? "text-[#3D3530] group-hover:text-[#6D5D8A]"
                     : "text-[#FBF6EE] text-shadow-soft"
@@ -56,7 +56,7 @@ export function SiteHeader() {
                 MAMU
               </span>
               <span
-                className={`font-accent italic text-[10px] sm:text-[11px] -mt-0.5 transition-colors ${
+                className={`font-accent italic text-[11px] sm:text-xs lg:text-sm -mt-0.5 transition-colors ${
                   scrolled ? "text-[#6B5F55]" : "text-[#FBF6EE]/80"
                 }`}
               >
