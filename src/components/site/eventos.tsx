@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { CalendarDays, MapPin, Music, Flower2 } from "lucide-react";
 import { ScrollReveal } from "./scroll-reveal";
+import { TiltCard } from "./tilt-card";
 
 const EVENTS = [
   {
@@ -65,58 +66,61 @@ export function Eventos() {
             return (
               <ScrollReveal
                 key={event.title}
-                as="article"
                 direction="up"
                 delay={idx * 0.12}
                 duration={0.7}
-                className={`group relative overflow-hidden rounded-3xl bg-[#FFFBF4] border border-[#E0D4BD] shadow-card hover:shadow-float transition-all duration-500 ${
-                  event.featured ? "lg:row-span-2 lg:col-span-1" : ""
-                }`}
+                className={`[perspective:1000px] ${event.featured ? "lg:row-span-2 lg:col-span-1" : ""}`}
               >
-                <div
-                  className={`relative overflow-hidden ${event.featured ? "aspect-[4/3] lg:aspect-[4/5]" : "aspect-[4/3]"}`}
+                <TiltCard
+                  max={6}
+                  scale={1.02}
+                  className={`group relative overflow-hidden rounded-3xl bg-[#FFFBF4] border border-[#E0D4BD] shadow-card hover:shadow-float transition-shadow duration-500 h-full`}
                 >
-                  <picture>
-                    <source type="image/avif" srcSet={event.image.replace(/\.jpg$/, ".avif")} />
-                    <source type="image/webp" srcSet={event.image.replace(/\.jpg$/, ".webp")} />
-                    <img
-                      src={event.image}
-                      alt={`${event.title} — MAMU Casa de Té en Calmayo, Córdoba`}
-                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                      loading="lazy"
-                    />
-                  </picture>
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#3D3530]/85 via-[#3D3530]/30 to-transparent" />
                   <div
-                    className="absolute top-4 left-4 h-11 w-11 rounded-full bg-[#FBF6EE] flex items-center justify-center shadow-md"
-                    style={{ color: event.accent }}
+                    className={`relative overflow-hidden ${event.featured ? "aspect-[4/3] lg:aspect-[4/5]" : "aspect-[4/3]"}`}
                   >
-                    <Icon className="h-5 w-5" strokeWidth={1.8} />
+                    <picture>
+                      <source type="image/avif" srcSet={event.image.replace(/\.jpg$/, ".avif")} />
+                      <source type="image/webp" srcSet={event.image.replace(/\.jpg$/, ".webp")} />
+                      <img
+                        src={event.image}
+                        alt={`${event.title} — MAMU Casa de Té en Calmayo, Córdoba`}
+                        className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                        loading="lazy"
+                      />
+                    </picture>
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#3D3530]/85 via-[#3D3530]/30 to-transparent" />
+                    <div
+                      className="absolute top-4 left-4 h-11 w-11 rounded-full bg-[#FBF6EE] flex items-center justify-center shadow-md"
+                      style={{ color: event.accent }}
+                    >
+                      <Icon className="h-5 w-5" strokeWidth={1.8} />
+                    </div>
+                    {event.featured && (
+                      <span className="absolute top-4 right-4 px-3 py-1 rounded-full bg-[#6D5D8A] text-[#FBF6EE] text-xs font-medium shadow-md">
+                        Evento destacado
+                      </span>
+                    )}
+                    <div className="absolute bottom-0 left-0 right-0 p-6 text-[#FBF6EE]">
+                      <span className="font-accent italic text-sm opacity-90">{event.date}</span>
+                      <h3 className="mt-1 font-serif text-xl lg:text-2xl font-medium leading-tight">
+                        {event.title}
+                      </h3>
+                    </div>
                   </div>
-                  {event.featured && (
-                    <span className="absolute top-4 right-4 px-3 py-1 rounded-full bg-[#6D5D8A] text-[#FBF6EE] text-xs font-medium shadow-md">
-                      Evento destacado
-                    </span>
-                  )}
-                  <div className="absolute bottom-0 left-0 right-0 p-6 text-[#FBF6EE]">
-                    <span className="font-accent italic text-sm opacity-90">{event.date}</span>
-                    <h3 className="mt-1 font-serif text-xl lg:text-2xl font-medium leading-tight">
-                      {event.title}
-                    </h3>
+                  <div className="p-6">
+                    <p className="text-sm text-[#6B5F55] leading-relaxed">
+                      {event.description}
+                    </p>
+                    <a
+                      href="#reservas"
+                      className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-[#6D5D8A] hover:text-[#5B4B78] transition-colors"
+                    >
+                      {event.cta}
+                      <span aria-hidden>→</span>
+                    </a>
                   </div>
-                </div>
-                <div className="p-6">
-                  <p className="text-sm text-[#6B5F55] leading-relaxed">
-                    {event.description}
-                  </p>
-                  <a
-                    href="#reservas"
-                    className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-[#6D5D8A] hover:text-[#5B4B78] transition-colors"
-                  >
-                    {event.cta}
-                    <span aria-hidden>→</span>
-                  </a>
-                </div>
+                </TiltCard>
               </ScrollReveal>
             );
           })}

@@ -247,6 +247,46 @@
     position: relative;
     z-index: 2;
   }
+
+  /* Ocultar cursor default en desktop (donde se usa CustomCursor) */
+  @media (pointer: fine) {
+    * {
+      cursor: none !important;
+    }
+    /* Inputs y textareas mantienen cursor de texto para mejor UX */
+    input, textarea {
+      cursor: text !important;
+    }
+    /* Selects mantienen cursor pointer */
+    select, [role="combobox"], [role="listbox"] {
+      cursor: pointer !important;
+    }
+  }
+}
+
+/* Transiciones suaves entre secciones — gradientes de 60px en los bordes
+   para evitar cortes secos entre crema y blanco */
+@layer base {
+  main > section {
+    position: relative;
+  }
+  /* Cada sección tiene una transición suave al final */
+  main > section + section::before {
+    content: "";
+    position: absolute;
+    top: -30px;
+    left: 0;
+    right: 0;
+    height: 30px;
+    background: linear-gradient(
+      to bottom,
+      rgba(251, 246, 238, 0) 0%,
+      rgba(255, 251, 244, 0.5) 50%,
+      transparent 100%
+    );
+    pointer-events: none;
+    z-index: 0;
+  }
 }
 
 /* Custom scrollbar */

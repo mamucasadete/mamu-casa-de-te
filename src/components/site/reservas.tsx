@@ -80,6 +80,18 @@ export function Reservas() {
 
   return (
     <section id="reservas" className="relative py-20 lg:py-28 overflow-hidden bg-paper">
+      {/* Watermark del logo gigante — refuerza branding */}
+      <div
+        aria-hidden="true"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none select-none"
+      >
+        <img
+          src="/images/logo-mamu.png"
+          alt=""
+          className="w-[600px] h-[600px] opacity-[0.04] object-contain"
+        />
+      </div>
+
       {/* Decorative background */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-0 right-0 h-96 w-96 rounded-full bg-[#B5A8C9]/20 blur-3xl" />

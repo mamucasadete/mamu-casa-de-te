@@ -11,10 +11,12 @@ import { Reservas } from "@/components/site/reservas";
 import { SiteFooter } from "@/components/site/footer";
 import { WhatsAppFloat } from "@/components/site/whatsapp-float";
 import { ScrollProgress } from "@/components/site/scroll-progress";
+import { CustomCursor } from "@/components/site/custom-cursor";
 
 export default function Home() {
   return (
     <div className="min-h-screen flex flex-col bg-background">
+      <CustomCursor />
       <ScrollProgress />
       <SiteHeader />
       <main className="flex-1">
