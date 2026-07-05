@@ -291,7 +291,7 @@ export function Reservas() {
                 <Button
                   type="submit"
                   size="lg"
-                  className="flex-1 bg-[#6D5D8A] hover:bg-[#5B4B78] text-[#FBF6EE] rounded-full gap-2 h-12 shadow-md"
+                  className="btn-shine flex-1 bg-[#6D5D8A] hover:bg-[#5B4B78] text-[#FBF6EE] rounded-full gap-2 h-12 shadow-md"
                 >
                   <Send className="h-4 w-4" />
                   Enviar reserva por WhatsApp

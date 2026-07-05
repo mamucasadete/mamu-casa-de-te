@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { Leaf, Sparkles } from "lucide-react";
 import { LavenderDivider } from "./divider";
+import { CountUp } from "./count-up";
 
 const AROMA_IMG = "/images/predio-panoramica.jpg";
 const TEA_POUR_IMG = "/images/taza-te.jpg";
@@ -114,17 +115,21 @@ export function SobreMamu() {
               </div>
             </div>
 
-            {/* Stats */}
+            {/* Stats con contador animado */}
             <div className="mt-8 grid grid-cols-3 gap-4 text-center">
               {[
-                { value: "+9", label: "ediciones de la Fiesta de la Lavanda" },
-                { value: "100%", label: "lavanda cosechada en el campo" },
-                { value: "87 km", label: "desde Córdoba capital" },
+                { end: 9, prefix: "+", suffix: "", label: "ediciones de la Fiesta de la Lavanda" },
+                { end: 100, prefix: "", suffix: "%", label: "lavanda cosechada en el campo" },
+                { end: 87, prefix: "", suffix: " km", label: "desde Córdoba capital" },
               ].map((stat) => (
                 <div key={stat.label} className="px-2">
-                  <div className="font-serif text-2xl sm:text-3xl font-semibold text-[#6D5D8A]">
-                    {stat.value}
-                  </div>
+                  <CountUp
+                    end={stat.end}
+                    prefix={stat.prefix}
+                    suffix={stat.suffix}
+                    duration={2200}
+                    className="font-serif text-2xl sm:text-3xl font-semibold text-[#6D5D8A] tabular-nums"
+                  />
                   <div className="mt-1 text-xs sm:text-sm text-[#6B5F55] leading-tight">
                     {stat.label}
                   </div>

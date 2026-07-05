@@ -87,7 +87,7 @@ export function SiteHeader() {
             <a href="#reservas" className="hidden sm:inline-flex">
               <Button
                 size="sm"
-                className={`shadow-sm rounded-full gap-2 px-5 transition-colors ${
+                className={`btn-shine shadow-sm rounded-full gap-2 px-5 transition-colors ${
                   scrolled
                     ? "bg-[#6D5D8A] hover:bg-[#5B4B78] text-[#FBF6EE]"
                     : "bg-[#FBF6EE] hover:bg-[#F0E8D9] text-[#6D5D8A]"

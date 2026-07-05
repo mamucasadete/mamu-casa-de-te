@@ -115,7 +115,7 @@ export function Hero() {
 
           <h1 className="mt-6 font-serif font-medium text-4xl sm:text-6xl lg:text-7xl leading-[1.05] text-balance text-shadow-soft">
             Merendá en un
-            <span className="block italic font-accent text-[#E8DCC4] mt-2">
+            <span className="block italic font-accent mt-2 bg-gradient-to-r from-[#E8DCC4] via-[#B5A8C9] to-[#9DB5A0] bg-clip-text text-transparent drop-shadow-[0_2px_8px_rgba(109,93,138,0.3)]">
               campo de lavanda
             </span>
           </h1>
@@ -129,7 +129,7 @@ export function Hero() {
             <a href="#reservas" className="w-full sm:w-auto">
               <Button
                 size="lg"
-                className="w-full sm:w-auto bg-[#6D5D8A] hover:bg-[#5B4B78] text-[#FBF6EE] rounded-full gap-2 px-8 h-12 text-base shadow-lg"
+                className="btn-shine w-full sm:w-auto bg-[#6D5D8A] hover:bg-[#5B4B78] text-[#FBF6EE] rounded-full gap-2 px-8 h-12 text-base shadow-lg"
               >
                 <CalendarHeart className="h-5 w-5" />
                 Reservá tu merienda

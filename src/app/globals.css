@@ -216,6 +216,37 @@
     background-color: rgba(139, 123, 168, 0.25);
     color: #3D3530;
   }
+
+  /* Efecto shine en botones — brillo que pasa de izquierda a derecha al hover */
+  .btn-shine {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+  }
+  .btn-shine::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    /* Banda diagonal de brillo, posicionada fuera del botón (a la izquierda) */
+    background: linear-gradient(
+      120deg,
+      transparent 30%,
+      rgba(255, 255, 255, 0.35) 50%,
+      transparent 70%
+    );
+    transform: translateX(-150%);
+    transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    pointer-events: none;
+    z-index: 1;
+  }
+  .btn-shine:hover::before {
+    transform: translateX(150%);
+  }
+  /* Asegura que el contenido del botón quede por encima del shine */
+  .btn-shine > * {
+    position: relative;
+    z-index: 2;
+  }
 }
 
 /* Custom scrollbar */
