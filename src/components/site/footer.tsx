@@ -27,6 +27,7 @@ export function SiteFooter() {
                 src="/images/logo-mamu.png"
                 alt="Logo de MAMU Casa de Té"
                 className="h-14 w-14 object-contain"
+                style={{ filter: "brightness(0) invert(1)" }}
               />
               <div className="flex flex-col">
                 <span className="font-serif text-2xl font-semibold tracking-[0.18em] text-[#F0E8D9]">
