@@ -86,8 +86,8 @@ export function ComoLlegar() {
                 <div>
                   <h3 className="font-serif text-lg font-medium text-[#3D3530]">Horarios</h3>
                   <p className="mt-1 text-sm text-[#6B5F55] leading-relaxed">
-                    <strong className="text-[#3D3530]">Viernes, sábados y domingos</strong><br/>
-                    desde las 17 h hasta el atardecer.<br/>
+                    <strong className="text-[#3D3530]">Fines de semana largos</strong><br/>
+                    de 10 a 18 horas.<br/>
                     <em className="text-xs">Eventos y feriados: horarios extendidos.</em>
                   </p>
                 </div>

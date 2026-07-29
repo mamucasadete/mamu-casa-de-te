@@ -196,14 +196,20 @@ const businessSchema = {
     {
       "@type": "OpeningHoursSpecification",
       dayOfWeek: ["Friday", "Saturday", "Sunday"],
-      opens: "17:00",
-      closes: "21:00",
+      opens: "10:00",
+      closes: "18:00",
     },
   ],
   specialOpeningHoursSpecification: [
     {
       "@type": "OpeningHoursSpecification",
-      description: "Feriados y Fiesta de la Cosecha de la Lavanda (enero): horarios extendidos, consultar.",
+      description: "Enero y febrero: abrimos jueves, viernes, sábados y domingos de 9 a 20 horas.",
+      validFrom: "2026-01-01",
+      validThrough: "2026-02-28",
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      description: "Feriados y Fiesta de la Cosecha de la Lavanda: horarios extendidos, consultar.",
       validFrom: "2026-01-01",
       validThrough: "2026-12-31",
     },

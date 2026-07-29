@@ -110,7 +110,7 @@ export function Hero() {
         >
           <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/15 backdrop-blur-sm border border-white/25 text-xs sm:text-sm font-accent italic tracking-wide">
             <span className="h-1.5 w-1.5 rounded-full bg-[#B5A8C9] animate-pulse" />
-            Meriendas de campo · Calmayo · Córdoba
+            Casa de té · Calmayo · Córdoba
           </span>
 
           <h1 className="mt-6 font-serif font-medium text-4xl sm:text-6xl lg:text-7xl leading-[1.05] text-balance text-shadow-soft">
@@ -155,7 +155,7 @@ export function Hero() {
           >
             <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20">
               <Clock className="h-4 w-4 text-[#B5A8C9]" />
-              Vie · Sáb · Dom — desde las 17 h
+              Fines de semana largos de 10 a 18 horas
             </span>
             <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20">
               <MapPin className="h-4 w-4 text-[#B5A8C9]" />

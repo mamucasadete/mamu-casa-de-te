@@ -28,7 +28,7 @@ const SPECIALTIES: Specialty[] = [
     icon: Coffee,
     title: "Infusiones de la casa",
     description:
-      "Té negro con lavanda, manzanilla serrana, hierbas frescas del jardín. Teteras de vidrio que rinden tres tazas, servidas con miel pura.",
+      "Té negro con la flor de la lavanda, cáscara de naranja y pétalos de rosa. Teteras de vidrio que rinden dos tazas.",
     image: "/images/taza-te.jpg",
     alt: "Tetera de vidrio con té rojo servido en taza, con panecillos artesanales — infusión de la casa en MAMU Calmayo",
     accent: "#5F7558",
@@ -46,7 +46,7 @@ const SPECIALTIES: Specialty[] = [
     icon: Croissant,
     title: "Panes & postres de estación",
     description:
-      "Pan de campo con hierbas, focaccia de lavanda, scones tibios, tortas de lavanda y limón. Hechos a mano cada mañana, cambian con la temporada.",
+      "Pan de campo, facturas de lavanda rellenas de dulce de leche con miel y nueces, alfajores artesanales y alfajores de maicena.",
     image: "/images/panes-postres.jpg",
     alt: "Tabla de panes artesanales, croissants, galletas y bollos con azúcar — repostería casera de MAMU Casa de Té",
     accent: "#C9A87C",

@@ -126,8 +126,7 @@ export function Reservas() {
                     Disponibilidad
                   </h3>
                   <p className="text-sm text-[#6B5F55] mt-0.5">
-                    Vie · Sáb · Dom desde las 17 h. Para eventos o grupos de más de 6 personas,
-                    consultá por horarios especiales.
+                    Durante el año, fines de semana largo de 10 a 18 horas.
                   </p>
                 </div>
               </div>

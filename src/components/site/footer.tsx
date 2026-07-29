@@ -146,8 +146,8 @@ export function SiteFooter() {
               <li className="flex items-start gap-2 text-[#F0E8D9]/75">
                 <Clock className="h-4 w-4 flex-shrink-0 mt-0.5 text-[#8FA586]" />
                 <div>
-                  <p className="font-medium text-[#F0E8D9]">Viernes · Sábado · Domingo</p>
-                  <p className="text-xs mt-0.5">desde las 17 h</p>
+                  <p className="font-medium text-[#F0E8D9]">Fines de semana largos</p>
+                  <p className="text-xs mt-0.5">De 10 a 18 horas</p>
                 </div>
               </li>
               <li className="text-xs text-[#F0E8D9]/60 italic leading-relaxed">

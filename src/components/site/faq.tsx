@@ -20,7 +20,7 @@ const FAQS = [
     icon: Clock,
     question: "¿Cuáles son los horarios de atención?",
     answer:
-      "Abrimos los días viernes, sábados y domingos desde las 17 h hasta el atardecer. En feriados y durante la Fiesta de la Cosecha de la Lavanda (enero) tenemos horarios extendidos. Te recomendamos consultar por WhatsApp antes de viajar para confirmar.",
+      "Durante el año abrimos los fines de semana largos de 9 a 18 horas. En enero y febrero abrimos los días jueves, viernes, sábados y domingos de 9 a 20 horas. Te recomendamos consultar por WhatsApp antes de viajar para confirmar.",
   },
   {
     icon: CalendarHeart,

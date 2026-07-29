@@ -16,106 +16,71 @@ const MENU: Record<string, MenuItem[]> = {
   "Meriendas de campo": [
     {
       name: "Merienda Mamu",
-      description: "Tetera de té de lavanda (3 tazas), 2 scones tibios con mermelada y 2 porciones de torta de la casa.",
-      price: "$ 8.500",
+      description: "Blend aromaherba, acompañado con cuatro facturas de lavanda.",
+      price: "$ 15.000",
       tag: "Para 2 personas",
     },
     {
       name: "Merienda Serrana",
-      description: "Café o té a elección, pan de campo con miel y queso, porción de torta de lavanda y limón.",
-      price: "$ 5.800",
+      description: "Café o té a elección, pan de campo con queso crema y mermelada.",
+      price: "$ 8.000",
     },
     {
       name: "Merienda para los más chicos",
-      description: "Chocolate con leche, waffle simple con dulce de leche y jugo de naranja natural.",
-      price: "$ 4.200",
+      description: "Chocolate con leche, waffles con dulce de leche, crema y frutas.",
+      price: "$ 10.000",
       tag: "Kids",
     },
     {
       name: "Picada dulce de lavanda",
-      description: "Tabla con budín, brownie, scones, frutas de estación, miel y dos infusiones a elección.",
-      price: "$ 7.600",
+      description: "Tabla con facturas de lavanda, budín, torta y dos infusiones a elección.",
+      price: "$ 20.000",
       tag: "Para compartir",
     },
   ],
   "Waffles & postres": [
     {
       name: "Waffle de lavanda clásico",
-      description: "Masa de lavanda, miel silvestre, crema chantilly infusionada y frutos rojos.",
-      price: "$ 4.800",
+      description: "Masa de lavanda, dulce de leche, crema y frutas.",
+      price: "$ 6.500",
       tag: "La estrella",
     },
     {
       name: "Waffle del campo",
-      description: "Con dulce de leche, banana, almendras tostadas y crema.",
-      price: "$ 5.200",
+      description: "Masa de lavanda, jamón, queso y queso crema.",
+      price: "$ 7.000",
     },
+  ],
+  "Tortas": [
     {
-      name: "Torta de lavanda y limón",
-      description: "Bizcocho húmedo con glaseado de limón y flores de lavanda fresca.",
-      price: "$ 3.400",
+      name: "Torta de lavanda y naranja",
+      description: "Bizcocho húmedo con glaseado de naranja y flores de lavanda fresca.",
+      price: "$ 6.000",
     },
+  ],
+  "Postres helados": [
     {
-      name: "Brownie con nuez",
-      description: "Brownie casero tibio con helado de crema americana y dulce de leche.",
-      price: "$ 3.800",
-    },
-    {
-      name: "Cheesecake de miel",
-      description: "Tarta tibia de queso con miel de lavanda y coulis de frutos rojos.",
-      price: "$ 4.100",
+      name: "Postres de la BARROCA",
+      description: "Cheesecake de oreo, cheesecake de frutos rojos, chocotorta, selva negra y tiramisú.",
+      price: "$ 5.000",
     },
   ],
   "Infusiones": [
     {
       name: "Té de lavanda Mamu",
-      description: "Té negro con flores de lavanda cosechadas en el campo. Tetera para 3 tazas.",
-      price: "$ 2.800",
+      description: "Blend aromaherba, té negro, lavanda, pétalos de rosas y cáscara de naranja.",
+      price: "$ 5.000",
       tag: "De la casa",
     },
     {
-      name: "Manzanilla serrana",
-      description: "Hierbas secas del jardín. Suave, ideal para la siesta.",
-      price: "$ 2.400",
-    },
-    {
-      name: "Hierbas del campo",
-      description: "Mezcla de peperina, menta y poleo. Típica de las sierras de Córdoba.",
-      price: "$ 2.400",
-    },
-    {
       name: "Café serrano",
-      description: "Café de tetera, espresso o lagrima. Leche vegetal sin cargo.",
-      price: "$ 1.900",
+      description: "Café o café con leche.",
+      price: "$ 4.500",
     },
     {
       name: "Chocolate con leche",
-      description: "Chocolate tibio espeso con crema chantilly. Para los días frescos.",
-      price: "$ 2.600",
-    },
-  ],
-  "Para llevar": [
-    {
-      name: "Sobres de té de lavanda",
-      description: "Caja con 10 saquitos. Llevate el aroma de MAMU a casa.",
-      price: "$ 3.500",
-    },
-    {
-      name: "Miel de lavanda",
-      description: "Frasco de 250 g. Miel pura infusionada con flores de Aromahérba.",
-      price: "$ 4.200",
-      tag: "Edición limitada",
-    },
-    {
-      name: "Scones para llevar",
-      description: "Media docena de scones recién horneados con mermelada a elección.",
-      price: "$ 3.800",
-    },
-    {
-      name: "Aceite esencial de lavanda",
-      description: "10 ml puro de Aromahérba. Aromaterapia y uso cosmético.",
-      price: "$ 6.500",
-      tag: "De Aromahérba",
+      description: "Leche chocolatada fría o caliente.",
+      price: "$ 6.000",
     },
   ],
 };
@@ -151,10 +116,10 @@ export function MenuSection() {
           </p>
         </motion.div>
 
-        <LavenderDivider className="my-10" label="meriendas · waffles · tés · para llevar" />
+        <LavenderDivider className="my-10" label="meriendas · waffles · tortas · postres · infusiones" />
 
         <Tabs value={active} onValueChange={setActive} className="max-w-5xl mx-auto">
-          <TabsList className="grid w-full grid-cols-2 sm:grid-cols-4 h-auto bg-[#FFFBF4] border border-[#E0D4BD] rounded-full p-1.5 gap-1">
+          <TabsList className="grid w-full grid-cols-2 sm:grid-cols-5 h-auto bg-[#FFFBF4] border border-[#E0D4BD] rounded-full p-1.5 gap-1">
             {TABS.map((tab) => (
               <TabsTrigger
                 key={tab}
