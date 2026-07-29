@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from "framer-motion";
-import { CalendarDays, MapPin, Music, Flower2 } from "lucide-react";
+import { MapPin, Flower2 } from "lucide-react";
 import { ScrollReveal } from "./scroll-reveal";
 import { TiltCard } from "./tilt-card";
 
@@ -16,26 +16,6 @@ const EVENTS = [
     accent: "#8B7BA8",
     image: "/images/paseo-lavanda.jpg",
     featured: true,
-  },
-  {
-    icon: CalendarDays,
-    date: "Abril · Anual",
-    title: "Calmayo Gastronómico",
-    description:
-      "Una celebración del Valle de Calamuchita en la que MAMU participa junto a otros cocineros y productores locales. Menú especial de tres pasos con productos de la región.",
-    cta: "Reservar mesa para el evento",
-    accent: "#A87D5E",
-    image: "/images/calmayo-gastronomico-stand.jpg",
-  },
-  {
-    icon: Music,
-    date: "Fines de semana largos",
-    title: "Música serrana al atardecer",
-    description:
-      "Cada vez que hay feriado prolongado, recibimos artistas locales que tocan folklore y música de autor mientras se sirve la merienda. Una pausa que se convierte en recuerdo.",
-    cta: "Ver próximos fines de semana",
-    accent: "#5F7558",
-    image: "/images/patio-nocturno.jpg",
   },
 ];
 
@@ -60,7 +40,7 @@ export function Eventos() {
           </p>
         </motion.div>
 
-        <div className="mt-14 grid lg:grid-cols-3 gap-6 lg:gap-8">
+        <div className="mt-14 max-w-2xl mx-auto">
           {EVENTS.map((event, idx) => {
             const Icon = event.icon;
             return (
@@ -69,12 +49,12 @@ export function Eventos() {
                 direction="up"
                 delay={idx * 0.12}
                 duration={0.7}
-                className={`[perspective:1000px] ${event.featured ? "lg:row-span-2 lg:col-span-1" : ""}`}
+                className="[perspective:1000px]"
               >
                 <TiltCard
                   max={6}
                   scale={1.02}
-                  className={`group relative overflow-hidden rounded-3xl bg-[#FFFBF4] border border-[#E0D4BD] shadow-card hover:shadow-float transition-shadow duration-500 h-full`}
+                  className={`group relative overflow-hidden rounded-3xl bg-[#FFFBF4] border border-[#E0D4BD] shadow-card hover:shadow-float transition-shadow duration-500`}
                 >
                   <div
                     className={`relative overflow-hidden ${event.featured ? "aspect-[4/3] lg:aspect-[4/5]" : "aspect-[4/3]"}`}
