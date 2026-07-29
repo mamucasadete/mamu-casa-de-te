@@ -1,12 +1,11 @@
 /**
- * Sanity Studio configuration for MAMU Casa de Té
+ * Standalone Sanity Studio for MAMU Casa de Té
  *
- * The Studio is the admin panel where the owner edits:
- * - Menu items (prices, descriptions, tags)
- * - Events
- * - FAQ
- * - Hours
- * - Photos (uploaded and managed by the admin)
+ * Runs on port 3333 (separate from Next.js on port 3000).
+ * This is the recommended approach to avoid Next.js 16 + Turbopack
+ * compilation issues with embedded studios.
+ *
+ * Run with: cd studio && bun run dev
  */
 import { defineConfig } from "sanity";
 import { structureTool } from "sanity/structure";
@@ -16,9 +15,8 @@ export default defineConfig({
   name: "mamu-casa-de-te",
   title: "MAMU Casa de Té · Admin",
 
-  // These come from .env.local — never hardcode them here
-  projectId: process.env.SANITY_STUDIO_PROJECT_ID || "ne69571t",
-  dataset: process.env.SANITY_STUDIO_DATASET || "production",
+  projectId: "ne69571t",
+  dataset: "production",
 
   plugins: [
     structureTool({
@@ -26,34 +24,18 @@ export default defineConfig({
         S.list()
           .title("MAMU Casa de Té")
           .items([
-            // ——— MENÚ ———
             S.listItem()
               .title("📋 Menú")
-              .child(
-                S.documentTypeList("menuItem")
-                  .title("Items del menú")
-                  .defaultOrdering([
-                    { field: "category", direction: "asc" },
-                    { field: "order", direction: "asc" },
-                  ])
-              ),
-
-            // ——— EVENTOS ———
+              .child(S.documentTypeList("menuItem").title("Items del menú")),
             S.listItem()
               .title("🎉 Eventos")
               .child(S.documentTypeList("event").title("Eventos")),
-
-            // ——— FAQ ———
             S.listItem()
               .title("❓ Preguntas Frecuentes")
               .child(S.documentTypeList("faq").title("Preguntas")),
-
-            // ——— GALERÍA ———
             S.listItem()
               .title("📸 Galería de fotos")
               .child(S.documentTypeList("galleryPhoto").title("Fotos")),
-
-            // ——— HORARIOS (singleton) ———
             S.listItem()
               .title("🕐 Horarios")
               .child(
@@ -62,8 +44,6 @@ export default defineConfig({
                   .documentId("horarios-actuales")
                   .title("Horarios de atención")
               ),
-
-            // ——— TEXTOS GENERALES (singleton) ———
             S.listItem()
               .title("📝 Textos del sitio")
               .child(
