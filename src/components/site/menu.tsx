@@ -2,93 +2,42 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import useSWR from "swr";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { LavenderDivider } from "./divider";
 
 type MenuItem = {
+  _id: string;
   name: string;
-  description?: string;
-  price: string;
+  description: string;
+  price: number;
+  category: string;
   tag?: string;
+  available: boolean;
+  order: number;
 };
 
-const MENU: Record<string, MenuItem[]> = {
-  "Meriendas de campo": [
-    {
-      name: "Merienda Mamu",
-      description: "Blend aromaherba, acompañado con cuatro facturas de lavanda.",
-      price: "$ 15.000",
-      tag: "Para 2 personas",
-    },
-    {
-      name: "Merienda Serrana",
-      description: "Café o té a elección, pan de campo con queso crema y mermelada.",
-      price: "$ 8.000",
-    },
-    {
-      name: "Merienda para los más chicos",
-      description: "Chocolate con leche, waffles con dulce de leche, crema y frutas.",
-      price: "$ 10.000",
-      tag: "Kids",
-    },
-    {
-      name: "Picada dulce de lavanda",
-      description: "Tabla con facturas de lavanda, budín, torta y dos infusiones a elección.",
-      price: "$ 20.000",
-      tag: "Para compartir",
-    },
-  ],
-  "Waffles & postres": [
-    {
-      name: "Waffle de lavanda clásico",
-      description: "Masa de lavanda, dulce de leche, crema y frutas.",
-      price: "$ 6.500",
-      tag: "La estrella",
-    },
-    {
-      name: "Waffle del campo",
-      description: "Masa de lavanda, jamón, queso y queso crema.",
-      price: "$ 7.000",
-    },
-  ],
-  "Tortas": [
-    {
-      name: "Torta de lavanda y naranja",
-      description: "Bizcocho húmedo con glaseado de naranja y flores de lavanda fresca.",
-      price: "$ 6.000",
-    },
-  ],
-  "Postres helados": [
-    {
-      name: "Postres de la BARROCA",
-      description: "Cheesecake de oreo, cheesecake de frutos rojos, chocotorta, selva negra y tiramisú.",
-      price: "$ 5.000",
-    },
-  ],
-  "Infusiones": [
-    {
-      name: "Té de lavanda Mamu",
-      description: "Blend aromaherba, té negro, lavanda, pétalos de rosas y cáscara de naranja.",
-      price: "$ 5.000",
-      tag: "De la casa",
-    },
-    {
-      name: "Café serrano",
-      description: "Café o café con leche.",
-      price: "$ 4.500",
-    },
-    {
-      name: "Chocolate con leche",
-      description: "Leche chocolatada fría o caliente.",
-      price: "$ 6.000",
-    },
-  ],
-};
+type MenuByCategory = Record<string, MenuItem[]>;
 
-const TABS = Object.keys(MENU);
+// Formatear precio ARS: 15000 → "$ 15.000"
+function formatPrice(price: number): string {
+  return `$ ${price.toLocaleString("es-AR")}`;
+}
+
+const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 export function MenuSection() {
-  const [active, setActive] = useState(TABS[0]);
+  const [active, setActive] = useState<string>("");
+
+  // Fetch menu from Sanity via API route
+  const { data: menu, error, isLoading } = useSWR<MenuByCategory>("/api/menu", fetcher, {
+    revalidateOnFocus: false,
+    dedupingInterval: 60000, // 1 minute cache
+  });
+
+  // Set first category as active when menu loads
+  const categories = menu ? Object.keys(menu) : [];
+  const currentActive = active || categories[0] || "";
 
   return (
     <section id="menu" className="relative bg-paper py-20 lg:py-28">
@@ -118,62 +67,89 @@ export function MenuSection() {
 
         <LavenderDivider className="my-10" label="meriendas · waffles · tortas · postres · infusiones" />
 
-        <Tabs value={active} onValueChange={setActive} className="max-w-5xl mx-auto">
-          <TabsList className="grid w-full grid-cols-2 sm:grid-cols-5 h-auto bg-[#FFFBF4] border border-[#E0D4BD] rounded-full p-1.5 gap-1">
-            {TABS.map((tab) => (
-              <TabsTrigger
-                key={tab}
-                value={tab}
-                className="rounded-full text-xs sm:text-sm font-medium data-[state=active]:bg-[#6D5D8A] data-[state=active]:text-[#FBF6EE] data-[state=active]:shadow-sm px-3 py-2.5 transition-all"
-              >
-                {tab}
-              </TabsTrigger>
-            ))}
-          </TabsList>
+        {/* Loading state */}
+        {isLoading && (
+          <div className="max-w-5xl mx-auto text-center py-12">
+            <div className="inline-block h-8 w-8 animate-spin rounded-full border-2 border-[#8B7BA8] border-t-transparent" />
+            <p className="mt-4 text-sm text-[#6B5F55] font-accent italic">Cargando el menú...</p>
+          </div>
+        )}
 
-          {TABS.map((tab) => (
-            <TabsContent key={tab} value={tab} className="mt-8">
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={active}
-                  initial={{ opacity: 0, y: 12 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -8 }}
-                  transition={{ duration: 0.4 }}
-                  className="grid sm:grid-cols-2 gap-4 sm:gap-5"
+        {/* Error state */}
+        {error && (
+          <div className="max-w-5xl mx-auto text-center py-12">
+            <p className="text-sm text-[#B85450]">
+              No se pudo cargar el menú en este momento. Por favor, recargá la página.
+            </p>
+          </div>
+        )}
+
+        {/* Menu content */}
+        {menu && categories.length > 0 && (
+          <Tabs
+            value={currentActive}
+            onValueChange={setActive}
+            className="max-w-5xl mx-auto"
+          >
+            <TabsList
+              className="grid w-full h-auto bg-[#FFFBF4] border border-[#E0D4BD] rounded-full p-1.5 gap-1"
+              style={{ gridTemplateColumns: `repeat(${categories.length}, minmax(0, 1fr))` }}
+            >
+              {categories.map((tab) => (
+                <TabsTrigger
+                  key={tab}
+                  value={tab}
+                  className="rounded-full text-xs sm:text-sm font-medium data-[state=active]:bg-[#6D5D8A] data-[state=active]:text-[#FBF6EE] data-[state=active]:shadow-sm px-3 py-2.5 transition-all"
                 >
-                  {MENU[tab].map((item) => (
-                    <div
-                      key={item.name}
-                      className="group flex gap-4 p-5 rounded-2xl bg-[#FFFBF4] border border-[#E0D4BD]/70 hover:border-[#8B7BA8]/50 hover:shadow-md transition-all"
-                    >
-                      <div className="flex-1 min-w-0">
-                        <div className="flex items-baseline justify-between gap-3 flex-wrap">
-                          <h3 className="font-serif text-lg font-medium text-[#3D3530]">
-                            {item.name}
-                          </h3>
-                          <span className="font-serif text-lg font-semibold text-[#6D5D8A] whitespace-nowrap">
-                            {item.price}
-                          </span>
+                  {tab}
+                </TabsTrigger>
+              ))}
+            </TabsList>
+
+            {categories.map((tab) => (
+              <TabsContent key={tab} value={tab} className="mt-8">
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={currentActive}
+                    initial={{ opacity: 0, y: 12 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -8 }}
+                    transition={{ duration: 0.4 }}
+                    className="grid sm:grid-cols-2 gap-4 sm:gap-5"
+                  >
+                    {menu[tab].map((item) => (
+                      <div
+                        key={item._id}
+                        className="group flex gap-4 p-5 rounded-2xl bg-[#FFFBF4] border border-[#E0D4BD]/70 hover:border-[#8B7BA8]/50 hover:shadow-md transition-all"
+                      >
+                        <div className="flex-1 min-w-0">
+                          <div className="flex items-baseline justify-between gap-3 flex-wrap">
+                            <h3 className="font-serif text-lg font-medium text-[#3D3530]">
+                              {item.name}
+                            </h3>
+                            <span className="font-serif text-lg font-semibold text-[#6D5D8A] whitespace-nowrap">
+                              {formatPrice(item.price)}
+                            </span>
+                          </div>
+                          {item.description && (
+                            <p className="mt-1.5 text-sm text-[#6B5F55] leading-relaxed">
+                              {item.description}
+                            </p>
+                          )}
+                          {item.tag && (
+                            <span className="mt-2 inline-block text-[10px] uppercase tracking-wider font-medium px-2 py-0.5 rounded-full bg-[#EFE6D6] text-[#6D5D8A] border border-[#E0D4BD]">
+                              {item.tag}
+                            </span>
+                          )}
                         </div>
-                        {item.description && (
-                          <p className="mt-1.5 text-sm text-[#6B5F55] leading-relaxed">
-                            {item.description}
-                          </p>
-                        )}
-                        {item.tag && (
-                          <span className="mt-2 inline-block text-[10px] uppercase tracking-wider font-medium px-2 py-0.5 rounded-full bg-[#EFE6D6] text-[#6D5D8A] border border-[#E0D4BD]">
-                            {item.tag}
-                          </span>
-                        )}
                       </div>
-                    </div>
-                  ))}
-                </motion.div>
-              </AnimatePresence>
-            </TabsContent>
-          ))}
-        </Tabs>
+                    ))}
+                  </motion.div>
+                </AnimatePresence>
+              </TabsContent>
+            ))}
+          </Tabs>
+        )}
 
         <div className="mt-12 text-center text-sm text-[#6B5F55]">
           <p>
