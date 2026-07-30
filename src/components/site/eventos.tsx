@@ -1,25 +1,36 @@
 'use client'
 
 import { motion } from "framer-motion";
+import useSWR from "swr";
 import { MapPin, Flower2 } from "lucide-react";
 import { ScrollReveal } from "./scroll-reveal";
 import { TiltCard } from "./tilt-card";
 
-const EVENTS = [
-  {
-    icon: Flower2,
-    date: "Enero · Cada verano",
-    title: "Fiesta de la Cosecha de la Lavanda",
-    description:
-      "El evento más esperado del año en Aromahérba. Una jornada de cosecha de lavanda al amanecer, feria de productores serranos, música en vivo y meriendas temáticas. Llegá temprano y llevate flores a casa.",
-    cta: "Consulta fecha exacta",
-    accent: "#8B7BA8",
-    image: "/images/paseo-lavanda.jpg",
-    featured: true,
-  },
-];
+type EventItem = {
+  _id: string;
+  title: string;
+  date: string;
+  description: string;
+  cta?: string;
+  image?: any;
+  featured: boolean;
+  accentColor: string;
+  order: number;
+};
+
+// Image fallbacks by event ID (in case the photo isn't uploaded to Sanity yet)
+const IMAGE_FALLBACKS: Record<string, string> = {
+  "event-cosecha-lavanda": "/images/paseo-lavanda.jpg",
+};
+
+const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 export function Eventos() {
+  const { data: events, error, isLoading } = useSWR<EventItem[]>("/api/events", fetcher, {
+    revalidateOnFocus: false,
+    dedupingInterval: 60000,
+  });
+
   return (
     <section id="eventos" className="relative bg-paper py-20 lg:py-28 overflow-hidden">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -40,71 +51,101 @@ export function Eventos() {
           </p>
         </motion.div>
 
-        <div className="mt-14 max-w-2xl mx-auto">
-          {EVENTS.map((event, idx) => {
-            const Icon = event.icon;
-            return (
-              <ScrollReveal
-                key={event.title}
-                direction="up"
-                delay={idx * 0.12}
-                duration={0.7}
-                className="[perspective:1000px]"
-              >
-                <TiltCard
-                  max={6}
-                  scale={1.02}
-                  className={`group relative overflow-hidden rounded-3xl bg-[#FFFBF4] border border-[#E0D4BD] shadow-card hover:shadow-float transition-shadow duration-500`}
+        {isLoading && (
+          <div className="mt-14 max-w-2xl mx-auto text-center py-8">
+            <div className="inline-block h-6 w-6 animate-spin rounded-full border-2 border-[#8B7BA8] border-t-transparent" />
+            <p className="mt-3 text-sm text-[#6B5F55] font-accent italic">Cargando eventos...</p>
+          </div>
+        )}
+
+        {error && (
+          <div className="mt-14 max-w-2xl mx-auto text-center py-8">
+            <p className="text-sm text-[#B85450]">
+              No se pudieron cargar los eventos. Por favor, recargá la página.
+            </p>
+          </div>
+        )}
+
+        {events && events.length > 0 && (
+          <div className="mt-14 max-w-2xl mx-auto">
+            {events.map((event, idx) => {
+              const Icon = Flower2;
+              // Use Sanity image if available, otherwise fallback to local
+              const imageSrc = event.image
+                ? event.image
+                : IMAGE_FALLBACKS[event._id] || "/images/paseo-lavanda.jpg";
+              return (
+                <ScrollReveal
+                  key={event._id}
+                  direction="up"
+                  delay={idx * 0.12}
+                  duration={0.7}
+                  className="[perspective:1000px]"
                 >
-                  <div
-                    className={`relative overflow-hidden ${event.featured ? "aspect-[4/3] lg:aspect-[4/5]" : "aspect-[4/3]"}`}
+                  <TiltCard
+                    max={6}
+                    scale={1.02}
+                    className={`group relative overflow-hidden rounded-3xl bg-[#FFFBF4] border border-[#E0D4BD] shadow-card hover:shadow-float transition-shadow duration-500`}
                   >
-                    <picture>
-                      <source type="image/avif" srcSet={event.image.replace(/\.jpg$/, ".avif")} />
-                      <source type="image/webp" srcSet={event.image.replace(/\.jpg$/, ".webp")} />
-                      <img
-                        src={event.image}
-                        alt={`${event.title} — MAMU Casa de Té en Calmayo, Córdoba`}
-                        className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                        loading="lazy"
-                      />
-                    </picture>
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#3D3530]/85 via-[#3D3530]/30 to-transparent" />
-                    <div
-                      className="absolute top-4 left-4 h-11 w-11 rounded-full bg-[#FBF6EE] flex items-center justify-center shadow-md"
-                      style={{ color: event.accent }}
-                    >
-                      <Icon className="h-5 w-5" strokeWidth={1.8} />
+                    <div className="relative overflow-hidden aspect-[4/3] lg:aspect-[4/5]">
+                      {typeof imageSrc === "string" ? (
+                        <picture>
+                          <source type="image/avif" srcSet={imageSrc.replace(/\.jpg$/, ".avif")} />
+                          <source type="image/webp" srcSet={imageSrc.replace(/\.jpg$/, ".webp")} />
+                          <img
+                            src={imageSrc}
+                            alt={`${event.title} — MAMU Casa de Té en Calmayo, Córdoba`}
+                            className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                            loading="lazy"
+                          />
+                        </picture>
+                      ) : (
+                        <img
+                          src={imageSrc}
+                          alt={`${event.title} — MAMU Casa de Té en Calmayo, Córdoba`}
+                          className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                          loading="lazy"
+                        />
+                      )}
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#3D3530]/85 via-[#3D3530]/30 to-transparent" />
+                      <div
+                        className="absolute top-4 left-4 h-11 w-11 rounded-full bg-[#FBF6EE] flex items-center justify-center shadow-md"
+                        style={{ color: event.accentColor || "#8B7BA8" }}
+                      >
+                        <Icon className="h-5 w-5" strokeWidth={1.8} />
+                      </div>
+                      {event.featured && (
+                        <span className="absolute top-4 right-4 px-3 py-1 rounded-full bg-[#6D5D8A] text-[#FBF6EE] text-xs font-medium shadow-md">
+                          Evento destacado
+                        </span>
+                      )}
+                      <div className="absolute bottom-0 left-0 right-0 p-6 text-[#FBF6EE]">
+                        <span className="font-accent italic text-sm opacity-90">{event.date}</span>
+                        <h3 className="mt-1 font-serif text-xl lg:text-2xl font-medium leading-tight">
+                          {event.title}
+                        </h3>
+                      </div>
                     </div>
-                    {event.featured && (
-                      <span className="absolute top-4 right-4 px-3 py-1 rounded-full bg-[#6D5D8A] text-[#FBF6EE] text-xs font-medium shadow-md">
-                        Evento destacado
-                      </span>
-                    )}
-                    <div className="absolute bottom-0 left-0 right-0 p-6 text-[#FBF6EE]">
-                      <span className="font-accent italic text-sm opacity-90">{event.date}</span>
-                      <h3 className="mt-1 font-serif text-xl lg:text-2xl font-medium leading-tight">
-                        {event.title}
-                      </h3>
+                    <div className="p-6">
+                      <p className="text-sm text-[#6B5F55] leading-relaxed">
+                        {event.description}
+                      </p>
+                      {event.cta && (
+                        <a
+                          href="#reservas"
+                          className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-[#6D5D8A] hover:text-[#5B4B78] transition-colors"
+                        >
+                          {event.cta}
+                          <span aria-hidden>→</span>
+                        </a>
+                      )}
                     </div>
-                  </div>
-                  <div className="p-6">
-                    <p className="text-sm text-[#6B5F55] leading-relaxed">
-                      {event.description}
-                    </p>
-                    <a
-                      href="#reservas"
-                      className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-[#6D5D8A] hover:text-[#5B4B78] transition-colors"
-                    >
-                      {event.cta}
-                      <span aria-hidden>→</span>
-                    </a>
-                  </div>
-                </TiltCard>
-              </ScrollReveal>
-            );
-          })}
-        </div>
+                  </TiltCard>
+                </ScrollReveal>
+              );
+            })}
+          </div>
+        )}
 
         {/* Banner */}
         <motion.div

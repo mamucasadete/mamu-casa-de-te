@@ -1,11 +1,29 @@
 'use client'
 
 import { motion } from "framer-motion";
+import useSWR from "swr";
 import { MapPin, Car, Navigation, Clock } from "lucide-react";
 
 const MAPS_QUERY = encodeURIComponent("Aromahérba, Calmayo, Córdoba, Argentina");
 
+type Hours = {
+  schedule: string;
+  summerSchedule?: string;
+  specialNote?: string;
+};
+
+const fetcher = (url: string) => fetch(url).then((res) => res.json());
+
 export function ComoLlegar() {
+  const { data: hours } = useSWR<Hours>("/api/hours", fetcher, {
+    revalidateOnFocus: false,
+    dedupingInterval: 60000,
+  });
+
+  // Default values while loading
+  const schedule = hours?.schedule || "Fines de semana largos de 10 a 18 horas";
+  const specialNote = hours?.specialNote || "Eventos y feriados: horarios extendidos.";
+
   return (
     <section id="como-llegar" className="relative py-20 lg:py-28 bg-[#FFFBF4]">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -87,8 +105,8 @@ export function ComoLlegar() {
                   <h3 className="font-serif text-lg font-medium text-[#3D3530]">Horarios</h3>
                   <p className="mt-1 text-sm text-[#6B5F55] leading-relaxed">
                     <strong className="text-[#3D3530]">Fines de semana largos</strong><br/>
-                    de 10 a 18 horas.<br/>
-                    <em className="text-xs">Eventos y feriados: horarios extendidos.</em>
+                    {schedule}<br/>
+                    <em className="text-xs">{specialNote}</em>
                   </p>
                 </div>
               </div>
