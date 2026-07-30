@@ -62,3 +62,4 @@ tmp/
 # Z scripts (development environment)
 .zscripts/
 .zscripts/dev.pid
+.env*
