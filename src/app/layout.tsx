@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     template: "%s · MAMU Casa de Té",
   },
   description:
-    "Casa de té y meriendas de campo en Aromahérba, Calmayo (Valle de Calamuchita, Córdoba). Especialidades con lavanda: waffles, infusiones y panes artesanales. Viernes a domingo desde las 17 h. Reservá tu mesa.",
+    "Casa de té y meriendas de campo en Aromahérba, Calmayo (Valle de Calamuchita, Córdoba). Especialidades con lavanda: waffles, infusiones y panes artesanales. Fines de semana largos de 10 a 18 h. Reservá tu mesa.",
   applicationName: "MAMU Casa de Té",
   generator: "Next.js",
   referrer: "origin-when-cross-origin",
@@ -55,6 +55,9 @@ export const metadata: Metadata = {
     "campo de lavanda Argentina",
     "Calmayo Córdoba turismo",
     "casa de té con lavanda",
+    "meriendas en Córdoba",
+    "dónde merendar en Calamuchita",
+    "Aromaherba Calmayo",
   ],
   authors: [{ name: "MAMU Casa de Té", url: SITE_URL }],
   creator: "MAMU Casa de Té",
@@ -74,7 +77,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "MAMU Casa de Té · Meriendas de Campo con Lavanda en Calmayo, Córdoba",
     description:
-      "Merendá en un campo de lavanda en Calmayo, Córdoba. Waffles de lavanda, infusiones y panes artesanales. Abierto viernes, sábado y domingo desde las 17 h. Reservá tu mesa por WhatsApp.",
+      "Merendá en un campo de lavanda en Calmayo, Córdoba. Waffles de lavanda, infusiones y panes artesanales. Fines de semana largos de 10 a 18 h. Reservá tu mesa por WhatsApp.",
     url: SITE_URL,
     siteName: "MAMU Casa de Té",
     locale: "es_AR",
@@ -96,7 +99,7 @@ export const metadata: Metadata = {
     creator: "@mamu_casa_de_te",
     title: "MAMU Casa de Té · Meriendas de Campo en Calmayo, Córdoba",
     description:
-      "Merendá en un campo de lavanda en Calmayo, Córdoba. Especialidades con lavanda, viernes a domingo desde las 17 h.",
+      "Merendá en un campo de lavanda en Calmayo, Córdoba. Especialidades con lavanda, fines de semana largos de 10 a 18 h.",
     images: ["/og-image.png"],
   },
   icons: {
