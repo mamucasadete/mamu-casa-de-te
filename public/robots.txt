@@ -1,5 +1,5 @@
 # robots.txt — MAMU Casa de Té
-# https://mamu-casa-de-te.vercel.app
+# https://mamucasadete.com.ar
 
 # Permite indexación completa a todos los bots importantes
 User-agent: Googlebot
@@ -57,4 +57,4 @@ Disallow: /_next/
 Disallow: /private/
 
 # Sitemap
-Sitemap: https://mamu-casa-de-te.vercel.app/sitemap.xml
+Sitemap: https://mamucasadete.com.ar/sitemap.xml

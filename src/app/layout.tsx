@@ -24,7 +24,7 @@ const cormorant = Cormorant_Garamond({
   style: ["normal", "italic"],
 });
 
-const SITE_URL = "https://mamu-casa-de-te.vercel.app";
+const SITE_URL = "https://mamucasadete.com.ar";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),

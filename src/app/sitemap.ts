@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 
-const SITE_URL = "https://mamu-casa-de-te.vercel.app";
+const SITE_URL = "https://mamucasadete.com.ar";
 
 // Las secciones de la single-page site, tratadas como anchors con prioridad SEO
 const SECTIONS = [
