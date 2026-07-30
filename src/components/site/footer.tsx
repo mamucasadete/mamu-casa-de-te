@@ -118,10 +118,10 @@ export function SiteFooter() {
               <li className="flex items-center gap-2 text-sm text-[#F0E8D9]/75">
                 <Mail className="h-4 w-4 flex-shrink-0 text-[#8FA586]" />
                 <a
-                  href="mailto:hola@mamucasadete.com.ar"
+                  href="mailto:mamucasadete@gmail.com"
                   className="hover:text-[#F0E8D9] transition-colors"
                 >
-                  hola@mamucasadete.com.ar
+                  mamucasadete@gmail.com
                 </a>
               </li>
               <li className="flex items-center gap-2 text-sm text-[#F0E8D9]/75">

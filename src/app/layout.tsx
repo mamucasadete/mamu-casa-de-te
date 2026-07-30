@@ -164,7 +164,7 @@ const businessSchema = {
     "Casa de té y meriendas de campo con especialidades de lavanda en Aromahérba, Calmayo, Córdoba. Waffles de lavanda, infusiones y panes artesanales.",
   url: SITE_URL,
   telephone: "+541157496667",
-  email: "hola@mamucasadete.com.ar",
+  email: "mamucasadete@gmail.com",
   image: [
     `${SITE_URL}/images/predio-panoramica.jpg`,
     `${SITE_URL}/images/waffle-lavanda.jpg`,
