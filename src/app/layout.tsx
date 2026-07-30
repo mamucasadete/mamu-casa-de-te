@@ -124,7 +124,7 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    google: "GOOGLE_VERIFICATION_CODE_HERE",
+    google: "XJf1YCmdA9aEoaOmb5Gui4J0L7pWM_MSaR0FIL-bkvY",
   },
   other: {
     "theme-color": "#6D5D8A",
@@ -503,7 +503,7 @@ export default function RootLayout({
       <head>
         <link rel="manifest" href="/manifest.webmanifest" />
         <link rel="alternate" type="application/rss+xml" title="MAMU Casa de Té" href="/feed.xml" />
-        <meta name="google-site-verification" content="GOOGLE_VERIFICATION_CODE_HERE" />
+        <meta name="google-site-verification" content="XJf1YCmdA9aEoaOmb5Gui4J0L7pWM_MSaR0FIL-bkvY" />
         {allSchemas.map((schema, idx) => (
           <script
             key={idx}
