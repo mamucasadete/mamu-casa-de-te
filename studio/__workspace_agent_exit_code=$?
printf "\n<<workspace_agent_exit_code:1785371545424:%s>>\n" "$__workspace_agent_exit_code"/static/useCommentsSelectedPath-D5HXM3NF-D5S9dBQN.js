@@ -1,0 +1,1 @@
+import{a as e}from"./rolldown-runtime-CNC7AqOf.js";import{v as t}from"./_singletons-CudH5FDJ.js";import{n}from"./jsx-runtime-BhxXKzgZ.js";var r=e(n(),1);function i(){let e=(0,r.useContext)(t);if(!e)throw Error(`useCommentsSelectedPath: missing context value`);return e}export{i as t};

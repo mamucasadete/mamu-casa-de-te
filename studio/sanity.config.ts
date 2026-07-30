@@ -1,11 +1,14 @@
 /**
  * Standalone Sanity Studio for MAMU Casa de Té
  *
- * Runs on port 3333 (separate from Next.js on port 3000).
- * This is the recommended approach to avoid Next.js 16 + Turbopack
- * compilation issues with embedded studios.
- *
- * Run with: cd studio && bun run dev
+ * Deployed as a static site on Vercel at: mamu-studio.vercel.app
+ * The owner logs in with mamucasadete@gmail.com to edit:
+ * - Menu items (prices, descriptions, tags)
+ * - Events
+ * - FAQ
+ * - Hours
+ * - Photos (uploaded by admin)
+ * - Site texts (hero, about, etc.)
  */
 import { defineConfig } from "sanity";
 import { structureTool } from "sanity/structure";
@@ -18,6 +21,8 @@ export default defineConfig({
   projectId: "ne69571t",
   dataset: "production",
 
+  //basePath: "/studio", // uncomment if deployed under a subpath
+
   plugins: [
     structureTool({
       structure: (S) =>
@@ -26,7 +31,14 @@ export default defineConfig({
           .items([
             S.listItem()
               .title("📋 Menú")
-              .child(S.documentTypeList("menuItem").title("Items del menú")),
+              .child(
+                S.documentTypeList("menuItem")
+                  .title("Items del menú")
+                  .defaultOrdering([
+                    { field: "category", direction: "asc" },
+                    { field: "order", direction: "asc" },
+                  ])
+              ),
             S.listItem()
               .title("🎉 Eventos")
               .child(S.documentTypeList("event").title("Eventos")),

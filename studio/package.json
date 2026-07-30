@@ -6,13 +6,14 @@
   "scripts": {
     "dev": "sanity dev --port 3333",
     "build": "sanity build",
-    "start": "sanity start --port 3333"
+    "start": "sanity start --port 3333",
+    "deploy": "sanity deploy"
   },
   "dependencies": {
+    "sanity": "^6.7.0",
     "@sanity/vision": "^6.7.0",
     "react": "^19.2.2",
     "react-dom": "^19.2.2",
-    "sanity": "^6.7.0",
     "styled-components": "^6.1.15"
   }
 }

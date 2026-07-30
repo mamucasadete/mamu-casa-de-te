@@ -1,0 +1,1 @@
+import{p as e}from"./BehaviorSubject-Bhry32Mo.js";var t=e(function(e){return function(){e(this),this.name=`EmptyError`,this.message=`no elements in sequence`}});export{t};
