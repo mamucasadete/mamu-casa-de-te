@@ -1,14 +1,37 @@
 'use client'
 
-import { useRef } from "react";
+import { useRef, useEffect, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { CalendarHeart, MapPin, Clock, ArrowDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const HERO_ALT = "Campo de lavanda en flor al atardecer en Calmayo, Valle de Calamuchita, Córdoba — bicicleta blanca entre las flores";
 
+type SiteTexts = {
+  heroBadge?: string;
+  heroTitle?: string;
+  heroSubtitle?: string;
+  heroPrimaryButton?: string;
+  heroSecondaryButton?: string;
+};
+
 export function Hero() {
   const containerRef = useRef<HTMLElement>(null);
+  const [texts, setTexts] = useState<SiteTexts>({});
+
+  useEffect(() => {
+    fetch("/api/site-texts")
+      .then((res) => res.json())
+      .then((data) => setTexts(data || {}))
+      .catch(() => {});
+  }, []);
+
+  // Default values (used until Sanity loads)
+  const heroBadge = texts.heroBadge || "Casa de té · Calmayo · Córdoba";
+  const heroTitle = texts.heroTitle || "Merendá en un campo de lavanda";
+  const heroSubtitle = texts.heroSubtitle || "Casa de té emplazada en Aromahérba, en el corazón del Valle de Calamuchita. Waffles de lavanda, infusiones y panes artesanales, servidos entre flores serranas.";
+  const heroPrimaryButton = texts.heroPrimaryButton || "Reservá tu merienda";
+  const heroSecondaryButton = texts.heroSecondaryButton || "Ver la carta";
 
   // useScroll nos da el progreso del scroll dentro de la sección del hero (0 al inicio, 1 al final)
   const { scrollYProgress } = useScroll({
@@ -110,19 +133,15 @@ export function Hero() {
         >
           <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/15 backdrop-blur-sm border border-white/25 text-xs sm:text-sm font-accent italic tracking-wide">
             <span className="h-1.5 w-1.5 rounded-full bg-[#B5A8C9] animate-pulse" />
-            Casa de té · Calmayo · Córdoba
+            {heroBadge}
           </span>
 
           <h1 className="mt-6 font-serif font-medium text-4xl sm:text-6xl lg:text-7xl leading-[1.05] text-balance text-shadow-soft">
-            Merendá en un
-            <span className="block italic font-accent mt-2 bg-gradient-to-r from-[#E8DCC4] via-[#B5A8C9] to-[#9DB5A0] bg-clip-text text-transparent drop-shadow-[0_2px_8px_rgba(109,93,138,0.3)]">
-              campo de lavanda
-            </span>
+            {heroTitle}
           </h1>
 
           <p className="mt-6 max-w-2xl mx-auto text-base sm:text-lg lg:text-xl text-[#FBF6EE]/90 font-light leading-relaxed">
-            Casa de té emplazada en <strong className="font-medium">Aromahérba</strong>, en el corazón del Valle de Calamuchita.
-            Waffles de lavanda, infusiones y panes artesanales, servidos entre flores serranas.
+            {heroSubtitle}
           </p>
 
           <div className="mt-9 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
@@ -132,7 +151,7 @@ export function Hero() {
                 className="btn-shine w-full sm:w-auto bg-[#6D5D8A] hover:bg-[#5B4B78] text-[#FBF6EE] rounded-full gap-2 px-8 h-12 text-base shadow-lg"
               >
                 <CalendarHeart className="h-5 w-5" />
-                Reservá tu merienda
+                {heroPrimaryButton}
               </Button>
             </a>
             <a href="#menu" className="w-full sm:w-auto">
@@ -141,7 +160,7 @@ export function Hero() {
                 variant="outline"
                 className="w-full sm:w-auto bg-white/10 hover:bg-white/20 backdrop-blur-sm text-[#FBF6EE] border-white/40 rounded-full px-8 h-12 text-base"
               >
-                Ver la carta
+                {heroSecondaryButton}
               </Button>
             </a>
           </div>

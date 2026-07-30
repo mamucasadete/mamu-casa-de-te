@@ -1,7 +1,8 @@
 'use client'
 
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { Leaf, Sparkles } from "lucide-react";
+import { Sparkles } from "lucide-react";
 import { LavenderDivider } from "./divider";
 import { CountUp } from "./count-up";
 
@@ -9,7 +10,37 @@ const AROMA_IMG = "/images/predio-panoramica.jpg";
 const TEA_POUR_IMG = "/images/taza-te.jpg";
 const LOGO_SEAL = "/images/logo-mamu.png";
 
+type SiteTexts = {
+  aboutTitle?: string;
+  aboutText1?: string;
+  aboutText2?: string;
+  stat1Value?: number;
+  stat1Label?: string;
+  stat2Value?: number;
+  stat2Label?: string;
+  stat3Value?: number;
+  stat3Suffix?: string;
+  stat3Label?: string;
+};
+
 export function SobreMamu() {
+  const [texts, setTexts] = useState<SiteTexts>({});
+
+  useEffect(() => {
+    fetch("/api/site-texts")
+      .then((res) => res.json())
+      .then((data) => setTexts(data || {}))
+      .catch(() => {});
+  }, []);
+
+  // Defaults (used while Sanity loads)
+  const aboutTitle = texts.aboutTitle || "Un rincón de campo donde el tiempo se detiene";
+  const aboutText1 = texts.aboutText1 || "MAMU nació como una invitación a merendar entre flores. En medio del cultivo de lavanda de Aromahérba —establecimiento serrano en Calmayo, Valle de Calamuchita— abrimos las puertas de nuestra casa de té para compartir lo que más amamos: el aroma de la lavanda recién cosechada, el pan tibio saliendo del horno y la conversación que se extiende hasta el atardecer.";
+  const aboutText2 = texts.aboutText2 || "Cada merienda es una experiencia de slow living: infusiones preparadas con hierbas del lugar, waffles de lavanda recién hechos y postres de la casa que cambian con las estaciones. Todo pensado para que desconectes y te quedes un rato más.";
+  const stat1 = { value: texts.stat1Value ?? 9, label: texts.stat1Label || "ediciones de la Fiesta de la Lavanda" };
+  const stat2 = { value: texts.stat2Value ?? 100, label: texts.stat2Label || "lavanda cosechada en el campo" };
+  const stat3 = { value: texts.stat3Value ?? 87, suffix: texts.stat3Suffix || " km", label: texts.stat3Label || "desde Córdoba capital" };
+
   return (
     <section id="sobre" className="relative bg-paper py-20 lg:py-28">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -65,23 +96,15 @@ export function SobreMamu() {
           >
             <span className="font-accent italic text-[#6D5D8A] text-xl">Nuestra historia</span>
             <h2 className="mt-2 font-serif text-3xl sm:text-4xl lg:text-5xl font-medium text-[#3D3530] leading-tight text-balance">
-              Un rincón de campo donde el tiempo se detiene
+              {aboutTitle}
             </h2>
 
             <div className="mt-6 space-y-4 text-[#3D3530]/80 leading-relaxed">
               <p>
-                <strong className="text-[#6D5D8A] font-semibold">MAMU</strong> nació como una invitación a
-                merendar entre flores. En medio del cultivo de lavanda de
-                <strong className="text-[#5F7558] font-semibold"> Aromahérba</strong> —establecimiento
-                serrano en Calmayo, Valle de Calamuchita— abrimos las puertas de nuestra casa de té
-                para compartir lo que más amamos: el aroma de la lavanda recién cosechada, el pan
-                tibio saliendo del horno y la conversación que se extiende hasta el atardecer.
+                <strong className="text-[#6D5D8A] font-semibold">MAMU</strong> {aboutText1.replace(/^MAMU\s+/, "")}
               </p>
               <p>
-                Cada merienda es una experiencia de <em className="font-accent">slow living</em>:
-                infusiones preparadas con hierbas del lugar, waffles de lavanda recién hechos y
-                postres de la casa que cambian con las estaciones. Todo pensado para que desconectes
-                y te quedes un rato más.
+                {aboutText2}
               </p>
             </div>
 
@@ -118,9 +141,9 @@ export function SobreMamu() {
             {/* Stats con contador animado */}
             <div className="mt-8 grid grid-cols-3 gap-4 text-center">
               {[
-                { end: 9, prefix: "+", suffix: "", label: "ediciones de la Fiesta de la Lavanda" },
-                { end: 100, prefix: "", suffix: "%", label: "lavanda cosechada en el campo" },
-                { end: 87, prefix: "", suffix: " km", label: "desde Córdoba capital" },
+                { end: stat1.value, prefix: "+", suffix: "", label: stat1.label },
+                { end: stat2.value, prefix: "", suffix: "%", label: stat2.label },
+                { end: stat3.value, prefix: "", suffix: stat3.suffix, label: stat3.label },
               ].map((stat) => (
                 <div key={stat.label} className="px-2">
                   <CountUp

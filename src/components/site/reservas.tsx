@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { CalendarHeart, Clock, Users, User, Mail, Phone, MessageSquare, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -16,7 +16,7 @@ import {
 } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
 
-const WHATSAPP_NUMBER = "5491157496667";
+const DEFAULT_WHATSAPP_NUMBER = "5491157496667";
 
 const TIME_SLOTS = [
   "17:00", "17:30", "18:00", "18:30",
@@ -25,8 +25,28 @@ const TIME_SLOTS = [
 
 const GUEST_OPTIONS = ["1", "2", "3", "4", "5", "6", "7", "8+"];
 
+type SiteTexts = {
+  reservasTitle?: string;
+  reservasDescription?: string;
+  whatsappNumber?: string;
+};
+
 export function Reservas() {
   const { toast } = useToast();
+  const [texts, setTexts] = useState<SiteTexts>({});
+
+  useEffect(() => {
+    fetch("/api/site-texts")
+      .then((res) => res.json())
+      .then((data) => setTexts(data || {}))
+      .catch(() => {});
+  }, []);
+
+  // Default values (used until Sanity loads)
+  const WHATSAPP_NUMBER = texts.whatsappNumber || DEFAULT_WHATSAPP_NUMBER;
+  const reservasTitle = texts.reservasTitle || "Un lugar entre las flores te espera";
+  const reservasDescription = texts.reservasDescription || "Para asegurarte una mesa los fines de semana o para eventos especiales, te recomendamos reservar con anticipación. Completá el formulario y te abrimos WhatsApp con el mensaje listo para enviar.";
+
   const [form, setForm] = useState({
     name: "",
     phone: "",
@@ -110,12 +130,10 @@ export function Reservas() {
           >
             <span className="font-accent italic text-[#6D5D8A] text-xl">Reservá tu mesa</span>
             <h2 className="mt-2 font-serif text-3xl sm:text-4xl lg:text-5xl font-medium text-[#3D3530] leading-tight text-balance">
-              Un lugar entre las flores te espera
+              {reservasTitle}
             </h2>
             <p className="mt-5 text-[#3D3530]/80 leading-relaxed">
-              Para asegurarte una mesa los fines de semana o para eventos especiales, te recomendamos
-              reservar con anticipación. Completá el formulario y te abrimos WhatsApp con el mensaje
-              listo para enviar.
+              {reservasDescription}
             </p>
 
             <div className="mt-8 space-y-4">
