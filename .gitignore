@@ -63,3 +63,4 @@ tmp/
 .zscripts/
 .zscripts/dev.pid
 .env*
+upload/

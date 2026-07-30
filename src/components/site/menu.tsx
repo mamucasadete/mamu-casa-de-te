@@ -92,14 +92,13 @@ export function MenuSection() {
             className="max-w-5xl mx-auto"
           >
             <TabsList
-              className="grid w-full h-auto bg-[#FFFBF4] border border-[#E0D4BD] rounded-full p-1.5 gap-1"
-              style={{ gridTemplateColumns: `repeat(${categories.length}, minmax(0, 1fr))` }}
+              className="grid w-full h-auto bg-[#FFFBF4] border border-[#E0D4BD] rounded-2xl sm:rounded-full p-1.5 gap-1 grid-cols-2 sm:grid-cols-3 lg:grid-cols-5"
             >
               {categories.map((tab) => (
                 <TabsTrigger
                   key={tab}
                   value={tab}
-                  className="rounded-full text-xs sm:text-sm font-medium data-[state=active]:bg-[#6D5D8A] data-[state=active]:text-[#FBF6EE] data-[state=active]:shadow-sm px-3 py-2.5 transition-all"
+                  className="rounded-full sm:rounded-full text-xs sm:text-sm font-medium data-[state=active]:bg-[#6D5D8A] data-[state=active]:text-[#FBF6EE] data-[state=active]:shadow-sm px-2 sm:px-3 py-2 sm:py-2.5 transition-all whitespace-nowrap"
                 >
                   {tab}
                 </TabsTrigger>
