@@ -480,6 +480,10 @@ const eventSchema = {
     name: "Aromahérba",
     url: "https://www.aromaherba.com.ar",
   },
+  performer: {
+    "@type": "PerformingGroup",
+    name: "Artistas locales de Calmayo",
+  },
   offers: {
     "@type": "Offer",
     price: "0",
